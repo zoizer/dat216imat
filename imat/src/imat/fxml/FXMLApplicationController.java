@@ -5,15 +5,22 @@
  */
 package imat.fxml;
 
+import imat.fxml.button.FXMLCategoryContainer;
+import imat.fxml.button.FXMLCheckoutButton;
+import imat.fxml.button.FXMLInventoryButton;
 import imat.fxml.button.FXMLUserPageButton;
+import imat.fxml.container.FXMLProductContainer;
+import imat.fxml.container.FXMLReceiptContainer;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 
@@ -37,11 +44,31 @@ public class FXMLApplicationController implements Initializable {
     @FXML
     private RowConstraints idMainBodyR1;
     @FXML
-    private VBox idBottomRight;
+    private HBox idMainTopLeft;
+    @FXML
+    private AnchorPane idMainTopRight;
+    @FXML
+    private VBox idMainBottomLeft;
+    @FXML
+    private VBox idMainBottomRight;
+    
+    
+    private FXMLUserPageButton userPageBtn;
+    private FXMLInventoryButton inventoryBtn;
+    private FXMLCheckoutButton checkoutBtn;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        idTopRight.getChildren().add(new FXMLUserPageButton());
+        userPageBtn = new FXMLUserPageButton();
+        inventoryBtn = new FXMLInventoryButton();
+        checkoutBtn = new FXMLCheckoutButton();
+        
+        idTopRight.getChildren().add(userPageBtn);
+        idMainTopLeft.getChildren().add(new FXMLCategoryContainer());
+        idMainTopRight.getChildren().add(inventoryBtn);
+        idMainBottomLeft.getChildren().add(new FXMLProductContainer());
+        idMainBottomRight.getChildren().add(new FXMLReceiptContainer());
+        idMainBottomRight.getChildren().add(checkoutBtn);
     }    
     
 }

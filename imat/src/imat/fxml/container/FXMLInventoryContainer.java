@@ -16,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class FXMLInventoryContainer extends AnchorPane {
     public FXMLInventoryContainer() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/button/FXMLInventoryContainer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLInventoryContainer.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

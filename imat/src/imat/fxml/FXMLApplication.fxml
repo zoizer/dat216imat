@@ -18,23 +18,29 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
-            <HBox spacing="10.0">
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
-                  <Label text="iMat" />
+                  <Label text="iMat" textAlignment="CENTER" />
                   <TextField fx:id="idSearchBar" maxWidth="1.7976931348623157E308" text="Sök ..." HBox.hgrow="ALWAYS" />
                   <AnchorPane fx:id="idTopRight" />
                </children>
             </HBox>
             <Separator />
-            <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <GridPane fx:id="idMainBody" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="5.0">
               <columnConstraints>
-                <ColumnConstraints fx:id="idMainBodyC0" hgrow="SOMETIMES" percentWidth="60.0" />
-                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints fx:id="idMainBodyC0" hgrow="SOMETIMES" minWidth="20.0" percentWidth="60.0" />
+                <ColumnConstraints fx:id="idMainBodyC1" hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints fx:id="idMainBodyR0" minHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints fx:id="idMainBodyR1" minHeight="20.0" vgrow="SOMETIMES" />
               </rowConstraints>
+               <children>
+                  <HBox fx:id="idMainTopLeft" spacing="10.0" />
+                  <AnchorPane fx:id="idMainTopRight" GridPane.columnIndex="1" />
+                  <VBox fx:id="idMainBottomLeft" alignment="TOP_CENTER" spacing="10.0" GridPane.rowIndex="1" />
+                  <VBox fx:id="idMainBottomRight" alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
             </GridPane>
          </children>
       </VBox>
