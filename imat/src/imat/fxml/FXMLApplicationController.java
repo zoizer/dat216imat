@@ -5,31 +5,43 @@
  */
 package imat.fxml;
 
+import imat.fxml.button.FXMLUserPageButton;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.VBox;
 
 /**
  *
  * @author Zoizer
  */
 public class FXMLApplicationController implements Initializable {
-    
     @FXML
-    private Label label;
-    
+    private TextField idSearchBar;
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private AnchorPane idTopRight;
+    @FXML
+    private GridPane idMainBody;
+    @FXML
+    private ColumnConstraints idMainBodyC0;
+    @FXML
+    private ColumnConstraints idMainBodyC1;
+    @FXML
+    private RowConstraints idMainBodyR0;
+    @FXML
+    private RowConstraints idMainBodyR1;
+    @FXML
+    private VBox idBottomRight;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        idTopRight.getChildren().add(new FXMLUserPageButton());
     }    
     
 }
