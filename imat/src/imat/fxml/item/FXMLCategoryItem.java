@@ -16,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class FXMLCategoryItem extends AnchorPane {
     public FXMLCategoryItem() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/button/FXMLCategoryItem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/item/FXMLCategoryItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
