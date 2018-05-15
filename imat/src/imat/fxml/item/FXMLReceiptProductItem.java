@@ -5,6 +5,7 @@
  */
 package imat.fxml.item;
 
+import imat.Product;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -14,8 +15,8 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Zoizer
  */
-public class FXMLReceiptProductItem extends AnchorPane {
-    public FXMLReceiptProductItem() {
+public class FXMLReceiptProductItem extends AnchorPane { // NOT USED
+    public FXMLReceiptProductItem(Product p) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/item/FXMLReceiptProductItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
