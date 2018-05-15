@@ -1,0 +1,14 @@
+.button-style{
+    -fx-text-inner-color: #0000FF;
+    -fx-font-size: 24px;
+    -fx-font-family: "System Bold";
+    -fx-background-color: #444444;
+    -fx-border-width: 4px;
+    -fx-border-color: #E09D0D;
+}
+.button-style:hover{
+    -fx-border-color: #E05D0D;
+}
+.button-style:pressed{
+    -fx-background-color: #333333;
+}
