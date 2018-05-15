@@ -6,8 +6,13 @@
 package imat.fxml.button;
 
 import java.io.IOException;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 
 /**
  * FXML extension class
@@ -15,6 +20,17 @@ import javafx.scene.layout.AnchorPane;
  * @author Zoizer
  */
 public class FXMLInventoryButton extends AnchorPane {
+    @FXML
+    private ImageView img;
+    @FXML
+    private Label text;
+    @FXML
+    private GridPane grid;
+    @FXML
+    private RowConstraints imgRow;
+    @FXML
+    private GridPane imgGrid;
+    
     public FXMLInventoryButton() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/button/FXMLInventoryButton.fxml"));
         fxmlLoader.setRoot(this);
@@ -25,5 +41,8 @@ public class FXMLInventoryButton extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        
+        img.fitWidthProperty().bind(imgGrid.widthProperty());
+        img.fitHeightProperty().bind(imgGrid.heightProperty());
     }
 }
