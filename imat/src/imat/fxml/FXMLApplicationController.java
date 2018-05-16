@@ -10,7 +10,7 @@ import imat.fxml.button.FXMLCheckoutButton;
 import imat.fxml.button.FXMLInventoryButton;
 import imat.fxml.button.FXMLUserPageButton;
 import imat.fxml.container.FXMLProductContainer;
-import imat.fxml.container.FXMLReceiptContainer;
+import imat.fxml.container.FXMLInventoryContainer;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -67,7 +67,7 @@ public class FXMLApplicationController implements Initializable {
         idMainTopLeft.getChildren().add(new FXMLCategoryContainer());
         idMainTopRight.getChildren().add(inventoryBtn);
         idMainBottomLeft.getChildren().add(new FXMLProductContainer());
-        idMainBottomRight.getChildren().add(new FXMLReceiptContainer());
+        idMainBottomRight.getChildren().add(new FXMLInventoryContainer());
         idMainBottomRight.getChildren().add(checkoutBtn);
     }    
     

@@ -11,33 +11,29 @@ package imat;
  */
 public class Product {
     private final String name; // considered id.
-    private int priceHekto;
+    private double price;
     
     public Product() {
         name = "<Product missing>";
-        priceHekto = 100;
+        price = 100.0;
     }
     
-    public Product(String n, int price) {
+    public Product(String n, double price) {
         name = n;
-        priceHekto = price;
+        this.price = price;
     }
     
     public String toString() {
         return name;
     }
     
-    public int GetHektoPrice() {
-        return priceHekto;
-    }
-    
-    public String GetPrice() {
-        String price = "" + priceHekto;
+    public double GetPrice() {
+        /*String price = "" + priceHekto;
         if (price.length() < 3) {
             price = "0," + price;
         } else {
             price = price.substring(0, price.length() - 2) + "," + price.substring(price.length() - 2, price.length());
-        }
+        }*/
         
         return price;
     }
