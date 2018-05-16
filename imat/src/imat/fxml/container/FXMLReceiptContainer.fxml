@@ -20,7 +20,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Produkt" textFill="#c3c3c3" />
+            <Label fx:id="grid" text="Produkt" textFill="#c3c3c3" />
             <Label text="Antal" textFill="#c3c3c3" GridPane.columnIndex="1" />
             <Label text="Pris" textFill="#c3c3c3" GridPane.columnIndex="2" />
          </children>

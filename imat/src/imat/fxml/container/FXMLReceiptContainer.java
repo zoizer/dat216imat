@@ -30,14 +30,23 @@ public class FXMLReceiptContainer extends AnchorPane {
     }
     
     
-    @FXML
-    private GridPane grid;
+//    @FXML
+//    private GridPane grid;
     
     private HashMap<Product, ProductReceipt> items;
     private int currentRow;
     private static final int NAME_COL = 0;
     private static final int AMOUNT_COL = 1;
     private static final int PRICE_COL = 2;
+    
+    /*
+    
+        TODO
+        REMOVE EVERYTHING
+        USE FLOWPANE AND MANUALLY ADD NEW GRIDS INSTEAD,
+        MIGHT NOT ALIGN FULLY, BUT I CAN USE MANUAL PROPORTIONAL SIZES FOR EACH COLUMN.
+    
+    */
     
     public FXMLReceiptContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLReceiptContainer.fxml"));
@@ -54,7 +63,7 @@ public class FXMLReceiptContainer extends AnchorPane {
         }
     }
     
-    public void ChangeReceipt(Product p, Integer change) {
+    /*public void ChangeReceipt(Product p, Integer change) {
         ProductReceipt tmp = items.get(p);
         if (tmp == null) {
             AddItems(p, change);
@@ -79,6 +88,6 @@ public class FXMLReceiptContainer extends AnchorPane {
     private void RemoveItems(ProductReceipt r, Product p) {
         grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) == r.index);
         items.remove(p);
-    }
+    }*/
     
 }
