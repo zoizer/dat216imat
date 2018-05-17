@@ -5,15 +5,18 @@
  */
 package imat.fxml.container;
 
-import imat.Product;
 import imat.fxml.item.FXMLInventoryProductItem;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.Product;
 
 /**
  * FXML extension class
@@ -25,7 +28,7 @@ public class FXMLInventoryContainer extends AnchorPane {
     private HashMap<Product, FXMLInventoryProductItem> items;
     
     @FXML
-    private FlowPane flow;
+    private VBox vbox;
     @FXML
     private GridPane header;
     
@@ -44,12 +47,10 @@ public class FXMLInventoryContainer extends AnchorPane {
         }
         
         /**************** TEMPORARY  *******************/
-        Product p = new Product("Mjölk", 10.0);
-        Product p2 = new Product("Smör", 15.0);
-        UpdateInventory(p, 1);
-        UpdateInventory(p, 4);
-        UpdateInventory(p2, -1);
-        UpdateInventory(p2, 3);
+        List<Product> p = IMatDataHandler.getInstance().getProducts();
+        for (Product e : p) {
+            UpdateInventory(e, 1);
+        }
     }
     
     public final void UpdateInventory(Product p, Integer change) {
@@ -80,11 +81,11 @@ public class FXMLInventoryContainer extends AnchorPane {
     
     private void HideProduct(FXMLInventoryProductItem p) { // hide product from flow.
         p.Disable();
-        flow.getChildren().remove(p);
+        vbox.getChildren().remove(p);
     }
     
     private void DisplayProduct(FXMLInventoryProductItem p) {
         p.Enable();
-        flow.getChildren().add(p);
+        vbox.getChildren().add(p);
     }
 }

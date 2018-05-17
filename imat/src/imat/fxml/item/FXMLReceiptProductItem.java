@@ -5,10 +5,10 @@
  */
 package imat.fxml.item;
 
-import imat.Product;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.Product;
 
 /**
  * FXML extension class

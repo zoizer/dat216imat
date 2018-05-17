@@ -5,13 +5,13 @@
  */
 package imat.fxml.item;
 
-import imat.Product;
 import java.io.IOException;
 import java.text.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.Product;
 
 /**
  * FXML extension class
@@ -46,8 +46,8 @@ public class FXMLInventoryProductItem extends AnchorPane {
         this.p = p;
         this.active = false;
         
-        nameLabel.setText(p.toString());
-        priceLabel.setText(f.format(p.GetPrice()));
+        nameLabel.setText(p.getName());
+        priceLabel.setText(f.format(p.getPrice()));
     }
     
     public void SetAmount(int am) {
