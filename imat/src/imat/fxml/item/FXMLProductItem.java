@@ -27,6 +27,18 @@ public class FXMLProductItem extends AnchorPane {
     @FXML
     private Label name;
     
+    @FXML
+    private Label cartinfo;
+    
+    @FXML
+    private Label price;
+    
+    @FXML
+    private ImageView imgputback;
+    
+    @FXML
+    private ImageView imgtake;
+    
     private Product p;
     
     public FXMLProductItem(Product p) {
@@ -42,6 +54,7 @@ public class FXMLProductItem extends AnchorPane {
         
         this.p = p;
         name.setText(p.getName());
+        price.setText(String.format("%.2f", p.getPrice()) + " " + p.getUnit());
         img.setImage(IMatDataHandler.getInstance().getFXImage(p, 64.0, 64.0));
     }
     
