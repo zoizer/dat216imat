@@ -23,7 +23,7 @@
               </rowConstraints>
                <children>
                   <Label fx:id="grid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" text="Produkt" textFill="#c3c3c3" />
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" text="Antal" textFill="#c3c3c3" GridPane.columnIndex="1" />
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" text="Mängd" textFill="#c3c3c3" GridPane.columnIndex="1" />
                   <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" text="Pris" textFill="#c3c3c3" GridPane.columnIndex="2" />
                </children>
                <padding>

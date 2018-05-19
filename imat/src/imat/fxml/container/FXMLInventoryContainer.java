@@ -53,7 +53,7 @@ public class FXMLInventoryContainer extends AnchorPane {
         }
     }
     
-    public final void UpdateInventory(Product p, Integer change) {
+    public final void UpdateInventory(Product p, double change) {
         FXMLInventoryProductItem tmp = items.get(p);
         if (tmp == null) {
             if (change > 0) {

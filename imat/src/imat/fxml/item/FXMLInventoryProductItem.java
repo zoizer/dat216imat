@@ -27,7 +27,7 @@ public class FXMLInventoryProductItem extends AnchorPane {
     private Label priceLabel;
     
     private Product p;
-    private int amount;
+    private double amount;
     private boolean active;
     
     public FXMLInventoryProductItem(Product p) {
@@ -40,26 +40,33 @@ public class FXMLInventoryProductItem extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        NumberFormat f = NumberFormat.getCurrencyInstance();
         
         this.amount = 0;
         this.p = p;
         this.active = false;
         
         nameLabel.setText(p.getName());
-        priceLabel.setText(f.format(p.getPrice()));
     }
     
-    public void SetAmount(int am) {
+    public void SetAmount(double am) {
         amount = am;
     }
     
-    public int GetAmount() {
+    public double GetAmount() {
         return amount;
     }
     
     public void Update() {
-        amountLabel.setText("" + amount);
+        String tmp = p.getUnitSuffix();
+        if (tmp.equals("kg")) {
+            amountLabel.setText("" + String.format("%.2f", amount) + " " + tmp);
+        } else /*if (tmp.equals("st"))*/ {
+            amountLabel.setText("" + Math.round(amount) + " " + tmp);
+        } /*else {
+           // amountLabel.setText("Unknown");
+      //     amountLabel.setText(tmp);
+        }*/
+        priceLabel.setText(NumberFormat.getCurrencyInstance().format(p.getPrice() * amount));
     }
     
     public void Enable() {
