@@ -2,4 +2,10 @@
      -fx-font-size: 13px;
      -fx-font-family: "System Bold";
  }
+ .application{
+    -fx-font-size: 20px;
+    -fx-font-family: "System Bold";
+    -fx-font-weight: bold;
+    -fx-background-color: #BFBFBF;
+ }
  

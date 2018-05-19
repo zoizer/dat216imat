@@ -27,6 +27,8 @@ public class FXMLProductItem extends AnchorPane {
     @FXML
     private Label name;
     
+    private Product p;
+    
     public FXMLProductItem(Product p) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/item/FXMLProductItem.fxml"));
         fxmlLoader.setRoot(this);
@@ -38,10 +40,12 @@ public class FXMLProductItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
         
+        this.p = p;
         name.setText(p.getName());
-        
-        IMatDataHandler d = IMatDataHandler.getInstance();
-        
-        img.setImage(d.getFXImage(p, 64.0, 64.0));
+        img.setImage(IMatDataHandler.getInstance().getFXImage(p, 64.0, 64.0));
+    }
+    
+    public Product GetProduct() {
+        return p;
     }
 }
