@@ -63,10 +63,12 @@ public class FXMLApplicationController implements Initializable {
         inventoryBtn = new FXMLInventoryButton();
         checkoutBtn = new FXMLCheckoutButton();
         
+        FXMLProductContainer tmp = new FXMLProductContainer();
+        
         idTopRight.getChildren().add(userPageBtn);
-        idMainTopLeft.getChildren().add(new FXMLCategoryContainer());
+        idMainTopLeft.getChildren().add(new FXMLCategoryContainer(tmp));
         idMainTopRight.getChildren().add(inventoryBtn);
-        idMainBottomLeft.getChildren().add(new FXMLProductContainer());
+        idMainBottomLeft.getChildren().add(tmp);
         idMainBottomRight.getChildren().add(new FXMLInventoryContainer());
         idMainBottomRight.getChildren().add(checkoutBtn);
     }    
