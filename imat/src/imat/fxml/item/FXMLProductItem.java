@@ -6,8 +6,12 @@
 package imat.fxml.item;
 
 import java.io.IOException;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
 /**
@@ -16,6 +20,13 @@ import se.chalmers.cse.dat216.project.Product;
  * @author Zoizer
  */
 public class FXMLProductItem extends AnchorPane {
+    
+    @FXML
+    private ImageView img;
+    
+    @FXML
+    private Label name;
+    
     public FXMLProductItem(Product p) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/item/FXMLProductItem.fxml"));
         fxmlLoader.setRoot(this);
@@ -26,5 +37,11 @@ public class FXMLProductItem extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        
+        name.setText(p.getName());
+        
+        IMatDataHandler d = IMatDataHandler.getInstance();
+        
+        img.setImage(d.getFXImage(p, 64.0, 64.0));
     }
 }
