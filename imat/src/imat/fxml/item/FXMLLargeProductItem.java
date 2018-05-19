@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package imat.fxml.container;
+package imat.fxml.item;
 
-import imat.fxml.item.FXMLLargeProductItem;
-import imat.fxml.item.FXMLProductItem;
 import java.io.IOException;
-import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
@@ -21,12 +19,16 @@ import se.chalmers.cse.dat216.project.Product;
  *
  * @author Zoizer
  */
-public class FXMLProductContainer extends AnchorPane {
-    @FXML
-    private VBox vb;
+public class FXMLLargeProductItem extends AnchorPane {
     
-    public FXMLProductContainer() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLProductContainer.fxml"));
+    @FXML
+    private ImageView img;
+    
+    @FXML
+    private Label name;
+    
+    public FXMLLargeProductItem(Product p) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/item/FXMLLargeProductItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -35,13 +37,11 @@ public class FXMLProductContainer extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        List<Product> p = IMatDataHandler.getInstance().getProducts();
-        for (Product e : p) {
-            vb.getChildren().add(new FXMLProductItem(e));
-        }
         
+        name.setText(p.getName());
         
-        FXMLProductItem tmp = (FXMLProductItem)vb.getChildren().remove(5);
-        vb.getChildren().add(4, new FXMLLargeProductItem(tmp.GetProduct()));
+        IMatDataHandler d = IMatDataHandler.getInstance();
+        
+        img.setImage(d.getFXImage(p, 64.0, 64.0));
     }
 }
