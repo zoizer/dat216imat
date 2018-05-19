@@ -5,7 +5,7 @@
  */
 package imat.fxml;
 
-import imat.fxml.button.FXMLCategoryContainer;
+import imat.fxml.container.FXMLCategoryContainer;
 import imat.fxml.button.FXMLCheckoutButton;
 import imat.fxml.button.FXMLInventoryButton;
 import imat.fxml.button.FXMLUserPageButton;

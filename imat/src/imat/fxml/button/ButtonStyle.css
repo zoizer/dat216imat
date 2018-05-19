@@ -12,3 +12,21 @@
 .button-style:pressed{
     -fx-background-color: #333333;
 }
+.toggle-style{
+    -fx-text-inner-color: #0000FF;
+    -fx-font-size: 16px;
+    -fx-font-family: "System Bold";
+    -fx-background-color: #444444;
+    -fx-border-width: 2px;
+    -fx-border-color: #E09D0D;
+}
+.toggle-style:hover{
+    -fx-border-color: #E05D0D;
+}
+.toggle-style:pressed{
+    -fx-background-color: #333333;
+}
+.toggle-style:selected{
+    -fx-border-color: #E05D0D;
+    -fx-border-width: 4px;
+}
