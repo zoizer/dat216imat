@@ -19,13 +19,11 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Zoizer
  */
-public class FXMLCategoryButton extends AnchorPane {
+public class FXMLCategoryButton extends ToggleButton {
     @FXML
     private ImageView img;
     @FXML
     private Label text;
-    @FXML
-    private ToggleButton tb;
     
     
     public FXMLCategoryButton(Image i, String s) {
@@ -41,9 +39,5 @@ public class FXMLCategoryButton extends AnchorPane {
         
         img.setImage(i);
         text.setText(s);
-    }
-    
-    public ToggleButton GetButton() {
-        return tb;
     }
 }

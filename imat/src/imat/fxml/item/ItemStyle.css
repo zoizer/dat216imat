@@ -10,3 +10,11 @@
     -fx-border-width: 1px;
     -fx-border-color: #666666;
 }
+.Item-Style-Product:hover{
+    -fx-background-color: #505050;
+    -fx-border-color: #E09D0D;
+}
+.Item-Style-Product:pressed{
+    -fx-background-color: #3F3F3F;
+    -fx-border-color: #E05D0D;
+}

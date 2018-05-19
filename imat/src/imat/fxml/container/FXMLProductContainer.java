@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ProductCategory;
 
 /**
  * FXML extension class
@@ -24,6 +25,7 @@ import se.chalmers.cse.dat216.project.Product;
 public class FXMLProductContainer extends AnchorPane {
     @FXML
     private VBox vb;
+    private ProductCategory activeFilter;
     
     public FXMLProductContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLProductContainer.fxml"));
@@ -43,5 +45,24 @@ public class FXMLProductContainer extends AnchorPane {
         
         FXMLProductItem tmp = (FXMLProductItem)vb.getChildren().remove(5);
         vb.getChildren().add(4, new FXMLLargeProductItem(tmp.GetProduct()));
+    }
+    
+    public void SetCategory(ProductCategory cat) {
+        activeFilter = cat;
+    }
+    
+    public void Reload() {
+        vb.getChildren().clear();
+        if (activeFilter != null) {
+            List<Product> l = IMatDataHandler.getInstance().getProducts(activeFilter);
+            for (Product e : l) { // SLOW
+                vb.getChildren().add(new FXMLProductItem(e));
+            }
+        } else {
+            List<Product> l = IMatDataHandler.getInstance().getProducts();
+            for (Product e : l) { // SLOW
+                vb.getChildren().add(new FXMLProductItem(e));
+            }
+        }
     }
 }

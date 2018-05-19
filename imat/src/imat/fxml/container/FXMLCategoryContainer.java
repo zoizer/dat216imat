@@ -8,8 +8,12 @@ package imat.fxml.container;
 import imat.fxml.button.FXMLCategoryButton;
 import java.io.IOException;
 import java.util.HashMap;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -30,11 +34,12 @@ public class FXMLCategoryContainer extends AnchorPane {
     private HashMap<FXMLCategoryButton, ProductCategory> cat;
     private int n;
     private ToggleGroup t;
+    private FXMLProductContainer p;
     
     @FXML
     private GridPane grid;
     
-    public FXMLCategoryContainer() {
+    public FXMLCategoryContainer(FXMLProductContainer p) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLCategoryContainer.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -45,6 +50,7 @@ public class FXMLCategoryContainer extends AnchorPane {
             throw new RuntimeException(exception);
         }
         
+        this.p = p;
         n = 0;
         cat = new HashMap<>();
         t = new ToggleGroup();
@@ -58,10 +64,25 @@ public class FXMLCategoryContainer extends AnchorPane {
         Add(new FXMLCategoryButton(null, "Kött"), ProductCategory.MEAT);
         Add(new FXMLCategoryButton(null, "Sött"), ProductCategory.SWEET);
         Add(new FXMLCategoryButton(null, "Favoriter"), null);
+        
+        t.selectedToggleProperty().addListener((ChangeListener<Toggle>) (ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) -> {
+            if (t.getSelectedToggle() != null) {
+                FXMLCategoryButton selected = (FXMLCategoryButton) t.getSelectedToggle();
+                if (selected == null) {
+                    p.SetCategory(null);
+                } else {
+                    p.SetCategory(cat.get(selected));
+                }
+            } else {
+                p.SetCategory(null);
+            }
+                
+            p.Reload();
+        });
     }
     
     private void Add(FXMLCategoryButton b, ProductCategory c) {
-        b.GetButton().setToggleGroup(t);
+        b.setToggleGroup(t);
         cat.put(b, c);
         grid.add(b, n/2, n%2);
         n++;
