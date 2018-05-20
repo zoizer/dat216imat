@@ -34,8 +34,8 @@
                                        <children>
                                           <HBox alignment="CENTER_LEFT" spacing="10.0">
                                              <children>
-                                                <Label text="iMat" textAlignment="CENTER" />
-                                                <TextField fx:id="idSearchBar" maxWidth="1.7976931348623157E308" promptText="Sök ..." HBox.hgrow="ALWAYS" />
+                                                <Label styleClass="text-application-title" text="iMat" textAlignment="CENTER" />
+                                                <TextField fx:id="idSearchBar" maxWidth="1.7976931348623157E308" promptText="Sök ..." styleClass="text-application-search" HBox.hgrow="ALWAYS" />
                                                 <AnchorPane fx:id="idTopRight" />
                                              </children>
                                           </HBox>
