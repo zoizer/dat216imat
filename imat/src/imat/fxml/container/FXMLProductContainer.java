@@ -29,6 +29,7 @@ public class FXMLProductContainer extends AnchorPane {
     private VBox vb;
     private ProductCategory activeFilter;
     private Map<Product, FXMLProductItem> productMap = new HashMap<>();
+    private String searchString = null;
     
     public FXMLProductContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLProductContainer.fxml"));
@@ -53,12 +54,28 @@ public class FXMLProductContainer extends AnchorPane {
     
     public void SetCategory(ProductCategory cat) {
         activeFilter = cat;
+        searchString = null;
+    }
+    
+    public void SetSearchString(String search){
+        searchString = search;
+        activeFilter = null;
+    }
+    
+    public void nullSearchVariables(){
+        searchString = null;
+        activeFilter = null;
     }
     
     public void Reload() {
         vb.getChildren().clear();
         if (activeFilter != null) {
             List<Product> l = IMatDataHandler.getInstance().getProducts(activeFilter);
+            for (Product e : l) {
+                vb.getChildren().add(productMap.get(e));
+            }
+        } else if(searchString != null) {
+            List<Product> l = IMatDataHandler.getInstance().findProducts(searchString);
             for (Product e : l) {
                 vb.getChildren().add(productMap.get(e));
             }
