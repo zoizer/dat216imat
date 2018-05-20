@@ -1,11 +1,41 @@
-.text-normal{
-     -fx-font-size: 13px;
-     -fx-font-family: "System Bold";
- }
  .application{
-    -fx-font-size: 20px;
-    -fx-font-family: "System Bold";
-    -fx-font-weight: bold;
     -fx-background-color: #BFBFBF;
  }
- 
+ .text-application-title
+ {
+    -fx-font-family: "System Bold";
+    -fx-font-size: 24px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+ }
+ .text-application-search
+ {
+    -fx-font-family: "System Bold";
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+ }
+ .text-small
+ {
+    -fx-font-family: "System Bold";
+    -fx-font-size: 16px;
+    -fx-text-fill: #C3C3C3;
+ }
+ .text-medium-title
+ {
+    -fx-font-size: 20px;
+    -fx-font-family: "System Bold";
+    -fx-text-fill: #C3C3C3;
+ }
+ .text-large
+ {
+    -fx-font-family: "System Bold";
+    -fx-font-size: 24px;
+    -fx-text-fill: #F8F8F8;
+ }
+ .text-medium-title
+ {
+    -fx-font-size: 20px;
+    -fx-font-family: "System Bold";
+    -fx-text-fill: #C3C3C3;
+    -fx-font-weight: bold;
+ }

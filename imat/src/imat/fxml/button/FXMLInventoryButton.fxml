@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="128.0" styleClass="button-style" stylesheets="@ButtonStyle.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="128.0" styleClass="button-style" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane fx:id="grid" alignment="TOP_CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -19,7 +20,7 @@
           <RowConstraints fx:id="imgRow" maxHeight="1.7976931348623157E308" minHeight="0.0" valignment="BOTTOM" vgrow="NEVER" />
         </rowConstraints>
          <children>
-            <Label fx:id="text" alignment="CENTER" text="Kundvagn" textAlignment="CENTER" textFill="#f8f8f8" />
+            <Label fx:id="text" alignment="CENTER" styleClass="text-large" text="Kundvagn" textAlignment="CENTER" textFill="#f8f8f8" />
             <GridPane fx:id="imgGrid" alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="0.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" />
@@ -38,4 +39,8 @@
          </children>
       </GridPane>
    </children>
+   <stylesheets>
+      <URL value="@ButtonStyle.css" />
+      <URL value="@../Generic.css" />
+   </stylesheets>
 </fx:root>
