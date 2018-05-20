@@ -47,7 +47,7 @@
     -fx-font-weight: bold;
     -fx-background-color: transparent;
     -fx-padding: 0 0 0 0;
-    -fx-border-width: 2px;
+    -fx-border-width: 0 4px 0 4px;
     -fx-border-color: #3F3F3F;
 }
 .spinner .increment-arrow,
