@@ -1,5 +1,15 @@
 .Item-Style-Inventory{
     -fx-background-color: #444444;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+}
+.Item-Style-Inventory:hover{
+    -fx-border-color: #E09D0D;
+    -fx-border-width: 2px;
+}
+.Item-Style-Inventory:pressed{
+    -fx-border-color: #E05D0D;
+    -fx-border-width: 2px;
 }
 .Item-Style-Product{
     -fx-background-color: #444444;
