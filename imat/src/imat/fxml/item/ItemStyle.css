@@ -27,3 +27,41 @@
     -fx-background-color: #3F3F3F;
     -fx-border-color: #E05D0D;
 }
+.spinner{
+    -fx-border-radius: 0px;
+    -fx-border-width: 0px;
+}
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: #3F3F3F;
+    -fx-body-color: #3F3F3F;
+    -fx-border-color: transparent;
+    -fx-border-radius: 0px;
+    -fx-border-width: 1px;
+}
+.spinner .text-field {
+   
+}
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
+    -fx-background-color: white;
+    -fx-body-color: white;
+    -fx-pref-height: 12px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 0px;
+    -fx-border-width: 1px;
+}
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #3F3F3F;
+    -fx-body-color: #3F3F3F;
+    -fx-border-color: #E09D0D;
+}
+.spinner .increment-arrow-button:hover:pressed,
+.spinner .decrement-arrow-button:hover:pressed,
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-background-color: #3F3F3F;
+    -fx-body-color: #3F3F3F;
+    -fx-border-color: #E05D0D;
+}
