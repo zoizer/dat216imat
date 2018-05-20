@@ -8,7 +8,9 @@ package imat.fxml.container;
 import imat.fxml.item.FXMLLargeProductItem;
 import imat.fxml.item.FXMLProductItem;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -26,6 +28,7 @@ public class FXMLProductContainer extends AnchorPane {
     @FXML
     private VBox vb;
     private ProductCategory activeFilter;
+    private Map<Product, FXMLProductItem> productMap = new HashMap<>();
     
     public FXMLProductContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLProductContainer.fxml"));
@@ -39,7 +42,8 @@ public class FXMLProductContainer extends AnchorPane {
         }
         List<Product> p = IMatDataHandler.getInstance().getProducts();
         for (Product e : p) {
-            vb.getChildren().add(new FXMLProductItem(e));
+            productMap.put(e, new FXMLProductItem(e));
+            vb.getChildren().add(productMap.get(e));
         }
         
         
@@ -55,13 +59,13 @@ public class FXMLProductContainer extends AnchorPane {
         vb.getChildren().clear();
         if (activeFilter != null) {
             List<Product> l = IMatDataHandler.getInstance().getProducts(activeFilter);
-            for (Product e : l) { // SLOW
-                vb.getChildren().add(new FXMLProductItem(e));
+            for (Product e : l) {
+                vb.getChildren().add(productMap.get(e));
             }
         } else {
             List<Product> l = IMatDataHandler.getInstance().getProducts();
-            for (Product e : l) { // SLOW
-                vb.getChildren().add(new FXMLProductItem(e));
+            for (Product e : l) {
+                vb.getChildren().add(productMap.get(e));
             }
         }
     }
