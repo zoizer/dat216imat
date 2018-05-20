@@ -4,7 +4,6 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="application" stylesheets="@Generic.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.fxml.FXMLApplicationController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="application" stylesheets="@Generic.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.fxml.FXMLApplicationController">
     <children>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="AS_NEEDED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -38,7 +37,6 @@
                                                 <TextField fx:id="idSearchBar" maxWidth="1.7976931348623157E308" promptText="Sök ..." styleClass="text-application-search" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
-                                          <Separator />
                                           <GridPane fx:id="idMainBody" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="5.0">
                                             <columnConstraints>
                                               <ColumnConstraints fx:id="idMainBodyC0" hgrow="SOMETIMES" minWidth="20.0" percentWidth="60.0" />
@@ -50,14 +48,29 @@
                                             </rowConstraints>
                                              <children>
                                                 <HBox fx:id="idMainTopLeft" spacing="10.0" />
-                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
-                                                   <children>
-                                                      <AnchorPane fx:id="idMainTopRight" />
-                                                      <AnchorPane fx:id="idTopRight" />
-                                                   </children>
-                                                </HBox>
                                                 <VBox fx:id="idMainBottomLeft" alignment="TOP_CENTER" spacing="10.0" GridPane.rowIndex="1" />
                                                 <VBox fx:id="idMainBottomRight" alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <GridPane alignment="CENTER" GridPane.columnIndex="1">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <HBox alignment="TOP_CENTER">
+                                                         <children>
+                                                            <AnchorPane fx:id="idMainTopRight" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox alignment="TOP_CENTER" GridPane.columnIndex="1">
+                                                         <children>
+                                                            <AnchorPane fx:id="idTopRight" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </GridPane>
                                              </children>
                                           </GridPane>
                                        </children>
