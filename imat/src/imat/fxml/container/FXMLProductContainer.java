@@ -24,11 +24,14 @@ import se.chalmers.cse.dat216.project.ProductCategory;
  * @author Zoizer
  */
 public class FXMLProductContainer extends AnchorPane {
+    private static FXMLProductContainer singleton;
+    
     @FXML
     private VBox vb;
     private ProductCategory activeFilter;
     private Map<Product, FXMLProductItem> productMap = new HashMap<>();
     private String searchString = null;
+    private Product singleProduct = null;
     
     public FXMLProductContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLProductContainer.fxml"));
@@ -40,6 +43,10 @@ public class FXMLProductContainer extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        
+        assert singleton == null;
+        singleton = this;
+        
         List<Product> p = IMatDataHandler.getInstance().getProducts();
         for (Product e : p) {
             productMap.put(e, new FXMLProductItem(e));
@@ -47,19 +54,30 @@ public class FXMLProductContainer extends AnchorPane {
         }
     }
     
+    public static FXMLProductContainer Get() {
+        assert singleton != null;
+        return singleton;
+    }
+    
     public void SetCategory(ProductCategory cat) {
+        nullSearchVariables();
         activeFilter = cat;
-        searchString = null;
     }
     
     public void SetSearchString(String search){
+        nullSearchVariables();
         searchString = search;
-        activeFilter = null;
+    }
+    
+    public void SetDisplayOne(Product p) {
+        nullSearchVariables();
+        singleProduct = p;
     }
     
     public void nullSearchVariables(){
         searchString = null;
         activeFilter = null;
+        singleProduct = null;
     }
     
     public void Reload() {
@@ -74,6 +92,8 @@ public class FXMLProductContainer extends AnchorPane {
             for (Product e : l) {
                 vb.getChildren().add(productMap.get(e));
             }
+        } else if (singleProduct != null) {
+            vb.getChildren().add(productMap.get(singleProduct));
         } else {
             List<Product> l = IMatDataHandler.getInstance().getProducts();
             for (Product e : l) {

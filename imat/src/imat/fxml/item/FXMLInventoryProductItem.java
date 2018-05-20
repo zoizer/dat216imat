@@ -5,8 +5,10 @@
  */
 package imat.fxml.item;
 
+import imat.fxml.container.FXMLProductContainer;
 import java.io.IOException;
 import java.text.*;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -80,5 +82,12 @@ public class FXMLInventoryProductItem extends AnchorPane {
     
     public boolean IsActive() {
         return active;
+    }
+    
+    @FXML
+    protected void onMouseClick(Event event) {
+        System.out.println("Clicked: " + this.toString());
+        FXMLProductContainer.Get().SetDisplayOne(p);
+        FXMLProductContainer.Get().Reload();
     }
 }
