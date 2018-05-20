@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="application" stylesheets="@Generic.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.fxml.FXMLApplicationController">
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="application" stylesheets="@Generic.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.fxml.FXMLApplicationController">
     <children>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="AS_NEEDED" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -36,7 +36,6 @@
                                              <children>
                                                 <Label styleClass="text-application-title" text="iMat" textAlignment="CENTER" />
                                                 <TextField fx:id="idSearchBar" maxWidth="1.7976931348623157E308" promptText="Sök ..." styleClass="text-application-search" HBox.hgrow="ALWAYS" />
-                                                <AnchorPane fx:id="idTopRight" />
                                              </children>
                                           </HBox>
                                           <Separator />
@@ -51,7 +50,12 @@
                                             </rowConstraints>
                                              <children>
                                                 <HBox fx:id="idMainTopLeft" spacing="10.0" />
-                                                <AnchorPane fx:id="idMainTopRight" GridPane.columnIndex="1" />
+                                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
+                                                   <children>
+                                                      <AnchorPane fx:id="idMainTopRight" />
+                                                      <AnchorPane fx:id="idTopRight" />
+                                                   </children>
+                                                </HBox>
                                                 <VBox fx:id="idMainBottomLeft" alignment="TOP_CENTER" spacing="10.0" GridPane.rowIndex="1" />
                                                 <VBox fx:id="idMainBottomRight" alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                              </children>
