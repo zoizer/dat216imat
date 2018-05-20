@@ -5,7 +5,6 @@
  */
 package imat.fxml.container;
 
-import imat.fxml.item.FXMLLargeProductItem;
 import imat.fxml.item.FXMLProductItem;
 import java.io.IOException;
 import java.util.HashMap;
@@ -46,10 +45,6 @@ public class FXMLProductContainer extends AnchorPane {
             productMap.put(e, new FXMLProductItem(e));
             vb.getChildren().add(productMap.get(e));
         }
-        
-        
-        FXMLProductItem tmp = (FXMLProductItem)vb.getChildren().remove(5);
-        vb.getChildren().add(4, new FXMLLargeProductItem(tmp.GetProduct()));
     }
     
     public void SetCategory(ProductCategory cat) {

@@ -11,8 +11,7 @@
     -fx-border-color: #E09D0D;
 }
 .Item-Style-Product:pressed{
-    -fx-background-color: #3F3F3F;
-    -fx-border-color: #E05D0D;
+    
 }
 .Item-Style-Simple-Button{
     -fx-background-color: transparent;
@@ -30,6 +29,7 @@
 .spinner{
     -fx-border-radius: 0px;
     -fx-border-width: 0px;
+    -fx-background-color: transparent;
 }
 .spinner .increment-arrow-button,
 .spinner .decrement-arrow-button {
@@ -38,16 +38,23 @@
     -fx-border-color: transparent;
     -fx-border-radius: 0px;
     -fx-border-width: 1px;
+    
 }
 .spinner .text-field {
-   
+    -fx-font-family: "System Bold";
+    -fx-font-size: 16px;
+    -fx-text-fill: #C3C3C3;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 0;
+    -fx-border-width: 2px;
+    -fx-border-color: #3F3F3F;
 }
 .spinner .increment-arrow,
 .spinner .decrement-arrow {
     -fx-background-color: white;
     -fx-body-color: white;
     -fx-pref-height: 12px;
-    -fx-border-color: transparent;
     -fx-border-radius: 0px;
     -fx-border-width: 1px;
 }
