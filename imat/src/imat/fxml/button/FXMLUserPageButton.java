@@ -9,6 +9,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -18,7 +19,7 @@ import javafx.scene.layout.GridPane;
  *
  * @author Zoizer
  */
-public class FXMLUserPageButton extends AnchorPane {
+public class FXMLUserPageButton extends ToggleButton {
     @FXML
     private ImageView img;
     @FXML

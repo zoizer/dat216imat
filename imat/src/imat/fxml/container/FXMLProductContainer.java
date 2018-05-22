@@ -24,8 +24,6 @@ import se.chalmers.cse.dat216.project.ProductCategory;
  * @author Zoizer
  */
 public class FXMLProductContainer extends AnchorPane {
-    private static FXMLProductContainer singleton;
-    
     @FXML
     private VBox vb;
     private ProductCategory activeFilter;
@@ -44,19 +42,11 @@ public class FXMLProductContainer extends AnchorPane {
             throw new RuntimeException(exception);
         }
         
-        assert singleton == null;
-        singleton = this;
-        
         List<Product> p = IMatDataHandler.getInstance().getProducts();
         for (Product e : p) {
             productMap.put(e, new FXMLProductItem(e));
             vb.getChildren().add(productMap.get(e));
         }
-    }
-    
-    public static FXMLProductContainer Get() {
-        assert singleton != null;
-        return singleton;
     }
     
     public void SetCategory(ProductCategory cat) {

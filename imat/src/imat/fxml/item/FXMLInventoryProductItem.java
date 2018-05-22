@@ -5,6 +5,7 @@
  */
 package imat.fxml.item;
 
+import imat.fxml.FXMLApplicationController;
 import imat.fxml.container.FXMLProductContainer;
 import java.io.IOException;
 import java.text.*;
@@ -87,7 +88,11 @@ public class FXMLInventoryProductItem extends AnchorPane {
     @FXML
     protected void onMouseClick(Event event) {
         System.out.println("Clicked: " + this.toString());
-        FXMLProductContainer.Get().SetDisplayOne(p);
-        FXMLProductContainer.Get().Reload();
+        FXMLProductContainer tmp = (FXMLProductContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.PRODUCT_CONTAINER);
+        FXMLApplicationController.Get().DeselectButtons();
+        tmp.SetDisplayOne(p);
+        tmp.Reload();
+        
+        FXMLApplicationController.Get().SetMainBody(FXMLApplicationController.SceneNode.PRODUCT_CONTAINER);
     }
 }

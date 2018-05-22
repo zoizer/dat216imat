@@ -34,12 +34,11 @@ public class FXMLCategoryContainer extends AnchorPane {
     private HashMap<FXMLCategoryButton, ProductCategory> cat;
     private int n;
     private ToggleGroup t;
-    private FXMLProductContainer p;
     
     @FXML
     private GridPane grid;
     
-    public FXMLCategoryContainer(FXMLProductContainer p) {
+    public FXMLCategoryContainer(ToggleGroup t) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLCategoryContainer.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -50,54 +49,39 @@ public class FXMLCategoryContainer extends AnchorPane {
             throw new RuntimeException(exception);
         }
         
-        this.p = p;
         n = 0;
         cat = new HashMap<>();
-        t = new ToggleGroup();
+        this.t = t;
         
         // We should really just merge some of these categories, every product has only one category but, CABBAGE
-        Add(new FXMLCategoryButton(null, "Bär"), ProductCategory.BERRY);
-        Add(new FXMLCategoryButton(null, "Bröd"), ProductCategory.BREAD);
-        Add(new FXMLCategoryButton(null, "Sallad"), ProductCategory.CABBAGE);
-        Add(new FXMLCategoryButton(null, "Citrus frukt"), ProductCategory.CITRUS_FRUIT);
-        Add(new FXMLCategoryButton(null, "Kalla drycker"), ProductCategory.COLD_DRINKS);
-        Add(new FXMLCategoryButton(null, "Mejeri"), ProductCategory.DAIRIES);
-        Add(new FXMLCategoryButton(null, "Exotisk frukt"), ProductCategory.EXOTIC_FRUIT);
-        Add(new FXMLCategoryButton(null, "Fisk"), ProductCategory.FISH);
-        Add(new FXMLCategoryButton(null, "Bakning"), ProductCategory.FLOUR_SUGAR_SALT);
-        Add(new FXMLCategoryButton(null, "Frukt"), ProductCategory.FRUIT);
-        Add(new FXMLCategoryButton(null, "Örter"), ProductCategory.HERB);
-        Add(new FXMLCategoryButton(null, "Varma drycker"), ProductCategory.HOT_DRINKS);
-        Add(new FXMLCategoryButton(null, "Kött"), ProductCategory.MEAT);
-        Add(new FXMLCategoryButton(null, "Melon"), ProductCategory.MELONS);
-        Add(new FXMLCategoryButton(null, "Nötter"), ProductCategory.NUTS_AND_SEEDS);
-        Add(new FXMLCategoryButton(null, "Pasta"), ProductCategory.PASTA);
-        Add(new FXMLCategoryButton(null, "Baljväxter"), ProductCategory.POD);
-        Add(new FXMLCategoryButton(null, "Potatis ris"), ProductCategory.POTATO_RICE);
-        Add(new FXMLCategoryButton(null, "Rotfrukter"), ProductCategory.ROOT_VEGETABLE);
-        Add(new FXMLCategoryButton(null, "Sött"), ProductCategory.SWEET);
-        Add(new FXMLCategoryButton(null, "Grönsaker frukt"), ProductCategory.VEGETABLE_FRUIT);
-        Add(new FXMLCategoryButton(null, "Favoriter"), null);
+        Add(new FXMLCategoryButton(null, "Bär", ProductCategory.BERRY));
+        Add(new FXMLCategoryButton(null, "Bröd", ProductCategory.BREAD));
+        Add(new FXMLCategoryButton(null, "Sallad", ProductCategory.CABBAGE));
+        Add(new FXMLCategoryButton(null, "Citrus frukt", ProductCategory.CITRUS_FRUIT));
+        Add(new FXMLCategoryButton(null, "Kalla drycker", ProductCategory.COLD_DRINKS));
+        Add(new FXMLCategoryButton(null, "Mejeri", ProductCategory.DAIRIES));
+        Add(new FXMLCategoryButton(null, "Exotisk frukt", ProductCategory.EXOTIC_FRUIT));
+        Add(new FXMLCategoryButton(null, "Fisk", ProductCategory.FISH));
+        Add(new FXMLCategoryButton(null, "Bakning", ProductCategory.FLOUR_SUGAR_SALT));
+        Add(new FXMLCategoryButton(null, "Frukt", ProductCategory.FRUIT));
+        Add(new FXMLCategoryButton(null, "Örter", ProductCategory.HERB));
+        Add(new FXMLCategoryButton(null, "Varma drycker", ProductCategory.HOT_DRINKS));
+        Add(new FXMLCategoryButton(null, "Kött", ProductCategory.MEAT));
+        Add(new FXMLCategoryButton(null, "Melon", ProductCategory.MELONS));
+        Add(new FXMLCategoryButton(null, "Nötter", ProductCategory.NUTS_AND_SEEDS));
+        Add(new FXMLCategoryButton(null, "Pasta", ProductCategory.PASTA));
+        Add(new FXMLCategoryButton(null, "Baljväxter", ProductCategory.POD));
+        Add(new FXMLCategoryButton(null, "Potatis ris", ProductCategory.POTATO_RICE));
+        Add(new FXMLCategoryButton(null, "Rotfrukter", ProductCategory.ROOT_VEGETABLE));
+        Add(new FXMLCategoryButton(null, "Sött", ProductCategory.SWEET));
+        Add(new FXMLCategoryButton(null, "Grönsaker frukt", ProductCategory.VEGETABLE_FRUIT));
+        Add(new FXMLCategoryButton(null, "Favoriter", null));
         
-        t.selectedToggleProperty().addListener((ChangeListener<Toggle>) (ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) -> {
-            if (t.getSelectedToggle() != null) {
-                FXMLCategoryButton selected = (FXMLCategoryButton) t.getSelectedToggle();
-                if (selected == null) {
-                    p.SetCategory(null);
-                } else {
-                    p.SetCategory(cat.get(selected));
-                }
-            } else {
-                p.SetCategory(null);
-            }
-                
-            p.Reload();
-        });
     }
     
-    private void Add(FXMLCategoryButton b, ProductCategory c) {
+    private void Add(FXMLCategoryButton b) {
         b.setToggleGroup(t);
-        cat.put(b, c);
+        cat.put(b, b.GetCategory());
         grid.add(b, n/2, n%2);
         n++;
     }
