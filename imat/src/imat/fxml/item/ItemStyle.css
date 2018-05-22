@@ -36,6 +36,24 @@
     -fx-background-color: #3F3F3F;
     -fx-border-color: #E05D0D;
 }
+.Item-Style-Receipt{
+    -fx-background-color: #444444;
+    -fx-border-width: 1px;
+    -fx-border-color: #666666;
+}
+.Item-Style-Receipt:hover{
+    -fx-background-color: #505050;
+    -fx-border-color: #E09D0D;
+}
+.Item-Style-Receipt:pressed{
+    -fx-background-color: #3F3F3F;
+    -fx-border-color: #E05D0D;
+}
+.Item-Style-Receipt:selected{
+    -fx-background-color: #505050;
+    -fx-border-width: 3px;
+    -fx-border-color: #E05D0D;
+}
 .spinner{
     -fx-border-radius: 0px;
     -fx-border-width: 0px;

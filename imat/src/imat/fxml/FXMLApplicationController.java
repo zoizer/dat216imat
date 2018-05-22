@@ -5,6 +5,7 @@
  */
 package imat.fxml;
 
+import imat.Imat;
 import imat.fxml.button.FXMLCategoryButton;
 import imat.fxml.container.FXMLCategoryContainer;
 import imat.fxml.button.FXMLCheckoutButton;
@@ -15,8 +16,18 @@ import imat.fxml.container.FXMLProductContainer;
 import imat.fxml.container.FXMLInventoryContainer;
 import imat.fxml.container.FXMLMyPageContainer;
 import imat.fxml.container.FXMLReceiptContainer;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -32,6 +43,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import se.chalmers.cse.dat216.project.Order;
 
 /**
  *
@@ -128,6 +140,7 @@ public class FXMLApplicationController implements Initializable {
                 } else if (t.getSelectedToggle() instanceof FXMLUserPageButton) {
                     SetMainBody(mypageCtn);
                 } else if (t.getSelectedToggle() instanceof FXMLReceiptButton) {
+                    receiptCtn.Update();
                     SetMainBody(receiptCtn);
                 }
                 

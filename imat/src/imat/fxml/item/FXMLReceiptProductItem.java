@@ -16,7 +16,7 @@ import se.chalmers.cse.dat216.project.Product;
  * @author Zoizer
  */
 public class FXMLReceiptProductItem extends AnchorPane {
-    public FXMLReceiptProductItem(Product p) {
+    public FXMLReceiptProductItem(Product p, double amount) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/item/FXMLReceiptProductItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
