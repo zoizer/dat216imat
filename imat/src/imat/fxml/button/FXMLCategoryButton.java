@@ -13,6 +13,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.ProductCategory;
 
 /**
  * FXML extension class
@@ -25,8 +26,9 @@ public class FXMLCategoryButton extends ToggleButton {
     @FXML
     private Label text;
     
+    private ProductCategory category;
     
-    public FXMLCategoryButton(Image i, String s) {
+    public FXMLCategoryButton(Image i, String s, ProductCategory cat) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/button/FXMLCategoryButton.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -37,7 +39,12 @@ public class FXMLCategoryButton extends ToggleButton {
             throw new RuntimeException(exception);
         }
         
+        category = cat;
         img.setImage(i);
         text.setText(s);
+    }
+    
+    public ProductCategory GetCategory() {
+        return category;
     }
 }

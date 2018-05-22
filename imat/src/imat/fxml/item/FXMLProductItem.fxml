@@ -40,7 +40,7 @@
                   <Label fx:id="name" styleClass="text-small" text="&lt;ProductName&gt;" />
                   <Label fx:id="cartinfo" styleClass="text-small" GridPane.columnIndex="1" />
                   <Label fx:id="price" styleClass="text-small" text="&lt;Price&gt;" GridPane.columnIndex="2" />
-                  <StackPane styleClass="Item-Style-Simple-Button" GridPane.columnIndex="3">
+                  <StackPane onMouseClicked="#putback" styleClass="Item-Style-Simple-Button" GridPane.columnIndex="3">
                      <children>
                         <ImageView fx:id="imgputback" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,7 +52,7 @@
                         <Insets />
                      </GridPane.margin>
                   </StackPane>
-                  <StackPane styleClass="Item-Style-Simple-Button" GridPane.columnIndex="5">
+                  <StackPane onMouseClicked="#take" styleClass="Item-Style-Simple-Button" GridPane.columnIndex="5">
                      <children>
                         <ImageView fx:id="imgtake" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
