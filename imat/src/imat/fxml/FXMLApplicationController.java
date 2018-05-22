@@ -45,6 +45,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Order;
 
+
 /**
  *
  * @author Zoizer
@@ -76,7 +77,7 @@ public class FXMLApplicationController implements Initializable {
     private VBox idMainBottomLeft;
     @FXML
     private VBox idMainBottomRight;
-    
+
     
     private FXMLUserPageButton userPageBtn;
     private FXMLReceiptButton receiptBtn;
@@ -88,6 +89,7 @@ public class FXMLApplicationController implements Initializable {
     private FXMLReceiptContainer receiptCtn;
     
     private ToggleGroup t;
+    private Customer customer;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -95,7 +97,7 @@ public class FXMLApplicationController implements Initializable {
         singleton = this;
         
         t = new ToggleGroup();
-        
+
         userPageBtn = new FXMLUserPageButton();
         inventoryBtn = new FXMLInventoryButton();
         receiptBtn = new FXMLReceiptButton();
@@ -151,6 +153,7 @@ public class FXMLApplicationController implements Initializable {
             }
                 
         });
+
     }    
     
     public void DeselectButtons() {

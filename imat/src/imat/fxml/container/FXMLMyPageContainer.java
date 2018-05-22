@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.Customer;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,12 +27,14 @@ import java.util.ResourceBundle;
  */
 public class FXMLMyPageContainer extends AnchorPane {
 
+    //myPage
     @FXML
     private TextField nameText, streetText, postcodeText, cityText, phoneText ;
 
-    private Customer customer;
 
     public FXMLMyPageContainer() {
+        IMatDataHandler handler = IMatDataHandler.getInstance();
+        Customer customer = handler.getCustomer();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLMyPageContainer.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -49,7 +52,7 @@ public class FXMLMyPageContainer extends AnchorPane {
                                 String oldValue, String newValue) {
 
                 customer.setFirstName(newValue);
-        }
+            }
         });
         // For street
         streetText.textProperty().addListener(new ChangeListener<String>() {
@@ -89,7 +92,6 @@ public class FXMLMyPageContainer extends AnchorPane {
         });
 
     }
-
 
 }
 
