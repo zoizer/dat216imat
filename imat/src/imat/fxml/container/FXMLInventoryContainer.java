@@ -49,21 +49,15 @@ public class FXMLInventoryContainer extends AnchorPane {
         /**************** TEMPORARY  *******************/
         List<Product> p = IMatDataHandler.getInstance().getProducts();
         for (Product e : p) {
-            UpdateInventory(e, 1);
+           // UpdateInventory(e, 1);
+           items.put(e, new FXMLInventoryProductItem(e));
         }
     }
     
     public final void UpdateInventory(Product p, double change) {
         FXMLInventoryProductItem tmp = items.get(p);
-        if (tmp == null) {
-            if (change > 0) {
-                tmp = new FXMLInventoryProductItem(p);
-                tmp.SetAmount(change);
-                tmp.Update();
-                items.put(p, tmp);
-                DisplayProduct(tmp);
-            } else return;
-        } else if (!tmp.IsActive()) {
+        if (tmp == null) return;
+        else if (!tmp.IsActive()) {
             if (change > 0) {
                 tmp.SetAmount(change);
                 tmp.Update();
@@ -71,7 +65,7 @@ public class FXMLInventoryContainer extends AnchorPane {
             } else return;
         } else {
             tmp.SetAmount(tmp.GetAmount() + change);
-            if (tmp.GetAmount() <= 0) {
+            if (tmp.GetAmount() <= 0.0001) {
                 HideProduct(tmp);
             } else {
                 tmp.Update();

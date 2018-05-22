@@ -30,7 +30,7 @@ public class FXMLInventoryProductItem extends AnchorPane {
     private Label priceLabel;
     
     private Product p;
-    private double amount;
+    private FXMLProductItem pi;
     private boolean active;
     
     public FXMLInventoryProductItem(Product p) {
@@ -44,7 +44,7 @@ public class FXMLInventoryProductItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
         
-        this.amount = 0;
+        pi = ((FXMLProductContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.PRODUCT_CONTAINER)).GetProductItem(p);
         this.p = p;
         this.active = false;
         
@@ -52,24 +52,16 @@ public class FXMLInventoryProductItem extends AnchorPane {
     }
     
     public void SetAmount(double am) {
-        amount = am;
+        pi.SetAmount(am);
     }
     
     public double GetAmount() {
-        return amount;
+        return pi.GetAmount();
     }
     
     public void Update() {
-        String tmp = p.getUnitSuffix();
-        if (tmp.equals("kg")) {
-            amountLabel.setText("" + String.format("%.2f", amount) + " " + tmp);
-        } else /*if (tmp.equals("st"))*/ {
-            amountLabel.setText("" + Math.round(amount) + " " + tmp);
-        } /*else {
-           // amountLabel.setText("Unknown");
-      //     amountLabel.setText(tmp);
-        }*/
-        priceLabel.setText(NumberFormat.getCurrencyInstance().format(p.getPrice() * amount));
+        amountLabel.setText(pi.GetAmountString());
+        priceLabel.setText(NumberFormat.getCurrencyInstance().format(p.getPrice() * pi.GetAmount()));
     }
     
     public void Enable() {
@@ -78,7 +70,7 @@ public class FXMLInventoryProductItem extends AnchorPane {
     
     public void Disable() {
         active = false;
-        amount = 0;
+        pi.SetAmount(0.0);
     }
     
     public boolean IsActive() {
@@ -87,7 +79,6 @@ public class FXMLInventoryProductItem extends AnchorPane {
     
     @FXML
     protected void onMouseClick(Event event) {
-        System.out.println("Clicked: " + this.toString());
         FXMLProductContainer tmp = (FXMLProductContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.PRODUCT_CONTAINER);
         FXMLApplicationController.Get().DeselectButtons();
         tmp.SetDisplayOne(p);

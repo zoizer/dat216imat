@@ -30,6 +30,8 @@ public class FXMLProductContainer extends AnchorPane {
     private Map<Product, FXMLProductItem> productMap = new HashMap<>();
     private String searchString = null;
     private Product singleProduct = null;
+    private boolean favFilter = false;
+    private boolean shoppingCartFilter = false;
     
     public FXMLProductContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLProductContainer.fxml"));
@@ -49,6 +51,10 @@ public class FXMLProductContainer extends AnchorPane {
         }
     }
     
+    public FXMLProductItem GetProductItem(Product p) {
+        return productMap.get(p);
+    }
+    
     public void SetCategory(ProductCategory cat) {
         nullSearchVariables();
         activeFilter = cat;
@@ -64,10 +70,22 @@ public class FXMLProductContainer extends AnchorPane {
         singleProduct = p;
     }
     
+    public void ShowFavorites() {
+        nullSearchVariables();
+        favFilter = true;
+    }
+    
+    public void ShowShoppingCart() {
+        nullSearchVariables();
+        shoppingCartFilter = true;
+    }
+    
     public void nullSearchVariables(){
         searchString = null;
         activeFilter = null;
         singleProduct = null;
+        favFilter = false;
+        shoppingCartFilter = false;
     }
     
     public void Reload() {
@@ -84,6 +102,14 @@ public class FXMLProductContainer extends AnchorPane {
             }
         } else if (singleProduct != null) {
             vb.getChildren().add(productMap.get(singleProduct));
+        } else if (favFilter) {
+            for (Map.Entry<Product, FXMLProductItem> entry : productMap.entrySet()) {
+                if (entry.getValue().IsFavorite()) vb.getChildren().add(entry.getValue());
+            }
+        } else if(shoppingCartFilter) {
+            for (Map.Entry<Product, FXMLProductItem> entry : productMap.entrySet()) {
+                if (entry.getValue().GetAmount() > 0.0001) vb.getChildren().add(entry.getValue());
+            }
         } else {
             List<Product> l = IMatDataHandler.getInstance().getProducts();
             for (Product e : l) {

@@ -5,10 +5,14 @@
  */
 package imat.fxml.item;
 
+import imat.fxml.FXMLApplicationController;
+import imat.fxml.container.FXMLInventoryContainer;
+import imat.fxml.container.FXMLProductContainer;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
 import java.util.function.UnaryOperator;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -52,6 +56,7 @@ public class FXMLProductItem extends AnchorPane {
     private Spinner spin;
     
     private Product p;
+    private double amount;
     
     public FXMLProductItem(Product p) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/item/FXMLProductItem.fxml"));
@@ -65,6 +70,8 @@ public class FXMLProductItem extends AnchorPane {
         }
         
         this.p = p;
+        amount = 0.0f;
+        
         if (p.getUnitSuffix().equals("kg")) {
             SpinnerValueFactory.DoubleSpinnerValueFactory valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1, 10.0, 0.1, 0.1);
 
@@ -110,5 +117,51 @@ public class FXMLProductItem extends AnchorPane {
     
     public Product GetProduct() {
         return p;
+    }
+    
+    public double GetAmount() {
+        return amount;
+    }
+    
+    public void SetAmount(double n) {
+        amount = n;
+        if (n <= 0.0001) cartinfo.setText("");
+        else cartinfo.setText(GetAmountString());
+    }
+    
+    public String GetAmountString() {
+        String tmp = p.getUnitSuffix();
+        if (tmp.equals("kg")) {
+            return ("" + String.format("%.2f", amount) + " " + tmp);
+        } else /*if (tmp.equals("st"))*/ {
+            return ("" + Math.round(amount) + " " + tmp);
+        }
+    }
+    
+    public void ToggleFavorite() {
+        if (!IsFavorite()) IMatDataHandler.getInstance().addFavorite(p);
+        else IMatDataHandler.getInstance().removeFavorite(p);
+    }
+    
+    public boolean IsFavorite() {
+        return IMatDataHandler.getInstance().isFavorite(p);
+    }
+    
+    @FXML
+    protected void putback(Event event) {
+        Double d;
+        if (p.getUnitSuffix().equals("kg")) d = (Double)spin.getValueFactory().getValue();
+        else d = ((Integer)spin.getValueFactory().getValue()).doubleValue();
+        
+        ((FXMLInventoryContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.INVENTORY_CONTAINER)).UpdateInventory(p, -d);
+    }
+    
+    @FXML
+    protected void take(Event event) {
+        Double d;
+        if (p.getUnitSuffix().equals("kg")) d = (Double)spin.getValueFactory().getValue();
+        else d = ((Integer)spin.getValueFactory().getValue()).doubleValue();
+        
+        ((FXMLInventoryContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.INVENTORY_CONTAINER)).UpdateInventory(p, d);
     }
 }

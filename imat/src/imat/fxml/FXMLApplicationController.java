@@ -67,6 +67,7 @@ public class FXMLApplicationController implements Initializable {
     private FXMLCheckoutButton checkoutBtn;
     private FXMLProductContainer productCtn;
     private FXMLMyPageContainer mypageCtn;
+    private FXMLInventoryContainer invCtn;
     
     private ToggleGroup t;
     
@@ -86,12 +87,13 @@ public class FXMLApplicationController implements Initializable {
         
         productCtn = new FXMLProductContainer();
         mypageCtn = new FXMLMyPageContainer();
+        invCtn = new FXMLInventoryContainer();
         
         idTopRight.getChildren().add(userPageBtn);
         idMainTopLeft.getChildren().add(new FXMLCategoryContainer(t));
         idMainTopRight.getChildren().add(inventoryBtn);
         idMainBottomLeft.getChildren().add(productCtn);
-        idMainBottomRight.getChildren().add(new FXMLInventoryContainer());
+        idMainBottomRight.getChildren().add(invCtn);
         idMainBottomRight.getChildren().add(checkoutBtn);
         
         
@@ -102,12 +104,16 @@ public class FXMLApplicationController implements Initializable {
                     SetMainBody(productCtn);
                     if (selected == null) {
                         productCtn.SetCategory(null);
+                        System.out.println("WILL THIS EVER HAPPEN?????");
                     } else {
-                        productCtn.SetCategory(selected.GetCategory());
+                        if (selected.GetCategory() == null) {
+                            productCtn.ShowFavorites();
+                        } else productCtn.SetCategory(selected.GetCategory());
                     }
                     productCtn.Reload();
                 } else if (t.getSelectedToggle() instanceof FXMLInventoryButton) {
-                    System.out.println("Selected INVENTORY");
+                    productCtn.ShowShoppingCart();
+                    productCtn.Reload();
                 } else if (t.getSelectedToggle() instanceof FXMLUserPageButton) {
                     SetMainBody(mypageCtn);
                 }
@@ -115,6 +121,7 @@ public class FXMLApplicationController implements Initializable {
             } else {
                 productCtn.SetCategory(null);
                 productCtn.Reload();
+                SetMainBody(productCtn);
             }
                 
         });
@@ -135,6 +142,7 @@ public class FXMLApplicationController implements Initializable {
         USER_PAGE_BUTTON,
         INVENTORY_BUTTON,
         CHECKOUT_BUTTON,
+        INVENTORY_CONTAINER,
     }
     
     public void SetMainBody(Node n) {
@@ -154,6 +162,7 @@ public class FXMLApplicationController implements Initializable {
             case USER_PAGE_BUTTON: return userPageBtn;
             case INVENTORY_BUTTON: return inventoryBtn;
             case CHECKOUT_BUTTON: return checkoutBtn;
+            case INVENTORY_CONTAINER: return invCtn;
             default: return null;
         }
     }
