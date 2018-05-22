@@ -30,12 +30,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import se.chalmers.cse.dat216.project.Customer;
 
 /**
  *
  * @author Zoizer
  */
-public class FXMLApplicationController implements Initializable {
+public class FXMLApplicationController extends Customer implements Initializable {
     private static FXMLApplicationController singleton;
     
     @FXML
@@ -60,7 +61,7 @@ public class FXMLApplicationController implements Initializable {
     private VBox idMainBottomLeft;
     @FXML
     private VBox idMainBottomRight;
-    
+
     
     private FXMLUserPageButton userPageBtn;
     private FXMLInventoryButton inventoryBtn;
@@ -70,6 +71,7 @@ public class FXMLApplicationController implements Initializable {
     private FXMLInventoryContainer invCtn;
     
     private ToggleGroup t;
+    private Customer customer;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,7 +79,7 @@ public class FXMLApplicationController implements Initializable {
         singleton = this;
         
         t = new ToggleGroup();
-        
+
         userPageBtn = new FXMLUserPageButton();
         inventoryBtn = new FXMLInventoryButton();
         userPageBtn.setToggleGroup(t);
@@ -125,6 +127,7 @@ public class FXMLApplicationController implements Initializable {
             }
                 
         });
+
     }    
     
     public void DeselectButtons() {

@@ -3,3 +3,18 @@
     -fx-border-width: 4px;
     -fx-border-color: #666666;
 }
+.Textfield-Style{
+    -fx-background-color: #C0C0C0;
+}
+.LabelNormal-Style{
+
+    -fx-font-size: 20px;
+    -fx-font-family: "Gill Sans";
+    -fx-font-weight: lighter;
+}
+.LabelLarger-Style{
+
+    -fx-font-size: 26px;
+    -fx-font-family: "Gill Sans";
+    -fx-font-weight: lighter;
+}

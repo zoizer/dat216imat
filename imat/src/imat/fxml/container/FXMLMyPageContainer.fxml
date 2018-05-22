@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root prefWidth="617.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefWidth="617.0" stylesheets="@ContainerStyle.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="600.0" prefWidth="617.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="160.0" styleClass="Container-Style">
                <children>
-                  <TextField fx:id="nameText" layoutX="308.0" layoutY="40.0" />
-                  <TextField fx:id="streetText" layoutX="308.0" layoutY="79.0" promptText="Gata" />
-                  <TextField fx:id="postcodeText" layoutX="308.0" layoutY="125.0" promptText="Postnummer" />
-                  <TextField fx:id="cityText" layoutX="308.0" layoutY="172.0" promptText="Stad" />
-                  <Label layoutX="274.0" layoutY="14.0" text="Personuppgifter" />
-                  <Label layoutX="156.0" layoutY="45.0" text="Namn" />
-                  <Label layoutX="157.0" layoutY="84.0" text="Adress" />
-                  <Label layoutX="157.0" layoutY="212.0" text="Telefon" />
-                  <TextField fx:id="phoneText" layoutX="308.0" layoutY="216.0" />
+                  <TextField fx:id="nameText" layoutX="240.0" layoutY="59.0" prefHeight="27.0" prefWidth="167.0" styleClass="Textfield-Style" />
+                  <TextField fx:id="streetText" layoutX="240.0" layoutY="116.0" prefHeight="27.0" prefWidth="167.0" promptText="Gata" styleClass="Textfield-Style" />
+                  <TextField fx:id="postcodeText" layoutX="240.0" layoutY="148.0" promptText="Postnummer" styleClass="Textfield-Style" />
+                  <TextField fx:id="cityText" layoutX="240.0" layoutY="180.0" promptText="Stad" styleClass="Textfield-Style" />
+                  <Label alignment="CENTER_RIGHT" layoutX="150.0" layoutY="60.0" prefWidth="80.0" styleClass="LabelNormal-Style" text="Namn" />
+                  <Label alignment="CENTER_RIGHT" layoutX="147.0" layoutY="118.0" prefWidth="80.0" styleClass="LabelNormal-Style" text="Adress" />
+                  <Label alignment="CENTER_RIGHT" layoutX="150.0" layoutY="244.0" prefWidth="80.0" styleClass="LabelNormal-Style" text="Telefon" />
+                  <TextField fx:id="phoneText" layoutX="240.0" layoutY="242.0" styleClass="Textfield-Style" />
+                  <Label layoutX="240.0" layoutY="14.0" styleClass="LabelLarger-Style" text="Personuppgifter" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="Container-Style">
                <children>
-                  <Label layoutX="274.0" layoutY="14.0" text="Kreditkort" />
-                  <TextField layoutX="308.0" layoutY="108.0" />
-                  <TextField layoutX="308.0" layoutY="219.0" />
-                  <Spinner layoutX="308.0" layoutY="53.0" />
-                  <Label layoutX="165.0" layoutY="58.0" text="Korttyp" />
-                  <Label layoutX="165.0" layoutY="113.0" text="Kortnummer" />
-                  <Label layoutX="165.0" layoutY="170.0" text="Giltig" />
-                  <Label layoutX="165.0" layoutY="224.0" text="CVC" />
-                  <Spinner layoutX="308.0" layoutY="165.0" prefHeight="27.0" prefWidth="76.0" />
-                  <Spinner layoutX="399.0" layoutY="165.0" prefHeight="27.0" prefWidth="76.0" />
+                  <Label layoutX="251.0" layoutY="14.0" styleClass="LabelLarger-Style" text="Kreditkort" />
+                  <TextField layoutX="244.0" layoutY="131.0" prefHeight="27.0" prefWidth="167.0" styleClass="Textfield-Style" />
+                  <TextField layoutX="244.0" layoutY="237.0" prefHeight="27.0" prefWidth="167.0" styleClass="Textfield-Style" />
+                  <Label alignment="CENTER_RIGHT" layoutX="118.0" layoutY="81.0" prefHeight="24.0" prefWidth="113.0" styleClass="LabelNormal-Style" text="Korttyp" />
+                  <Label alignment="CENTER_RIGHT" layoutX="118.0" layoutY="133.0" prefHeight="24.0" prefWidth="113.0" styleClass="LabelNormal-Style" text="Kortnummer" />
+                  <Label alignment="CENTER_RIGHT" layoutX="118.0" layoutY="185.0" prefHeight="24.0" prefWidth="113.0" styleClass="LabelNormal-Style" text="Giltig" />
+                  <Label alignment="CENTER_RIGHT" layoutX="118.0" layoutY="239.0" prefHeight="24.0" prefWidth="113.0" styleClass="LabelNormal-Style" text="CVC" />
+                  <ComboBox layoutX="244.0" layoutY="79.0" prefHeight="27.0" prefWidth="167.0" styleClass="Textfield-Style" />
+                  <ComboBox layoutX="244.0" layoutY="183.0" prefHeight="27.0" prefWidth="167.0" styleClass="Textfield-Style" />
                </children>
             </AnchorPane>
         </items>
