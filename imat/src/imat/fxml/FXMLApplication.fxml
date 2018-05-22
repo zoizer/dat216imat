@@ -39,7 +39,7 @@
                                           </HBox>
                                           <GridPane fx:id="idMainBody" hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="5.0">
                                             <columnConstraints>
-                                              <ColumnConstraints fx:id="idMainBodyC0" hgrow="SOMETIMES" minWidth="20.0" percentWidth="60.0" />
+                                              <ColumnConstraints fx:id="idMainBodyC0" hgrow="SOMETIMES" minWidth="20.0" percentWidth="63.0" />
                                               <ColumnConstraints fx:id="idMainBodyC1" hgrow="SOMETIMES" />
                                             </columnConstraints>
                                             <rowConstraints>
@@ -52,8 +52,9 @@
                                                 <VBox fx:id="idMainBottomRight" alignment="TOP_CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <GridPane alignment="CENTER" GridPane.columnIndex="1">
                                                   <columnConstraints>
-                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
                                                   </columnConstraints>
                                                   <rowConstraints>
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -61,12 +62,17 @@
                                                    <children>
                                                       <HBox alignment="TOP_CENTER">
                                                          <children>
-                                                            <AnchorPane fx:id="idMainTopRight" />
+                                                            <AnchorPane fx:id="mainBtn0" />
                                                          </children>
                                                       </HBox>
                                                       <HBox alignment="TOP_CENTER" GridPane.columnIndex="1">
                                                          <children>
-                                                            <AnchorPane fx:id="idTopRight" />
+                                                            <AnchorPane fx:id="mainBtn1" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox alignment="TOP_CENTER" GridPane.columnIndex="2">
+                                                         <children>
+                                                            <AnchorPane fx:id="mainBtn2" />
                                                          </children>
                                                       </HBox>
                                                    </children>

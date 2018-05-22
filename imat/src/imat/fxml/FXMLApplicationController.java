@@ -9,6 +9,7 @@ import imat.fxml.button.FXMLCategoryButton;
 import imat.fxml.container.FXMLCategoryContainer;
 import imat.fxml.button.FXMLCheckoutButton;
 import imat.fxml.button.FXMLInventoryButton;
+import imat.fxml.button.FXMLReceiptButton;
 import imat.fxml.button.FXMLUserPageButton;
 import imat.fxml.container.FXMLProductContainer;
 import imat.fxml.container.FXMLInventoryContainer;
@@ -41,8 +42,6 @@ public class FXMLApplicationController implements Initializable {
     @FXML
     private TextField idSearchBar;
     @FXML
-    private AnchorPane idTopRight;
-    @FXML
     private GridPane idMainBody;
     @FXML
     private ColumnConstraints idMainBodyC0;
@@ -55,7 +54,11 @@ public class FXMLApplicationController implements Initializable {
     @FXML
     private HBox idMainTopLeft;
     @FXML
-    private AnchorPane idMainTopRight;
+    private AnchorPane mainBtn0;
+    @FXML
+    private AnchorPane mainBtn1;
+    @FXML
+    private AnchorPane mainBtn2;
     @FXML
     private VBox idMainBottomLeft;
     @FXML
@@ -89,9 +92,10 @@ public class FXMLApplicationController implements Initializable {
         mypageCtn = new FXMLMyPageContainer();
         invCtn = new FXMLInventoryContainer();
         
-        idTopRight.getChildren().add(userPageBtn);
+        mainBtn1.getChildren().add(new FXMLReceiptButton());
+        mainBtn2.getChildren().add(userPageBtn);
         idMainTopLeft.getChildren().add(new FXMLCategoryContainer(t));
-        idMainTopRight.getChildren().add(inventoryBtn);
+        mainBtn0.getChildren().add(inventoryBtn);
         idMainBottomLeft.getChildren().add(productCtn);
         idMainBottomRight.getChildren().add(invCtn);
         idMainBottomRight.getChildren().add(checkoutBtn);
@@ -114,6 +118,7 @@ public class FXMLApplicationController implements Initializable {
                 } else if (t.getSelectedToggle() instanceof FXMLInventoryButton) {
                     productCtn.ShowShoppingCart();
                     productCtn.Reload();
+                    SetMainBody(productCtn);
                 } else if (t.getSelectedToggle() instanceof FXMLUserPageButton) {
                     SetMainBody(mypageCtn);
                 }
