@@ -32,7 +32,7 @@
                <children>
                   <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                      <image>
-                        <Image url="@../../resources/user_white_256.png" />
+                        <Image url="@../../resources/history_white_128.png" />
                      </image>
                   </ImageView>
                </children>

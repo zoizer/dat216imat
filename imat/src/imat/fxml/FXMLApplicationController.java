@@ -14,6 +14,7 @@ import imat.fxml.button.FXMLUserPageButton;
 import imat.fxml.container.FXMLProductContainer;
 import imat.fxml.container.FXMLInventoryContainer;
 import imat.fxml.container.FXMLMyPageContainer;
+import imat.fxml.container.FXMLReceiptContainer;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -66,11 +67,13 @@ public class FXMLApplicationController implements Initializable {
     
     
     private FXMLUserPageButton userPageBtn;
+    private FXMLReceiptButton receiptBtn;
     private FXMLInventoryButton inventoryBtn;
     private FXMLCheckoutButton checkoutBtn;
     private FXMLProductContainer productCtn;
     private FXMLMyPageContainer mypageCtn;
     private FXMLInventoryContainer invCtn;
+    private FXMLReceiptContainer receiptCtn;
     
     private ToggleGroup t;
     
@@ -83,16 +86,19 @@ public class FXMLApplicationController implements Initializable {
         
         userPageBtn = new FXMLUserPageButton();
         inventoryBtn = new FXMLInventoryButton();
+        receiptBtn = new FXMLReceiptButton();
         userPageBtn.setToggleGroup(t);
         inventoryBtn.setToggleGroup(t);
+        receiptBtn.setToggleGroup(t);
         
         checkoutBtn = new FXMLCheckoutButton();
         
         productCtn = new FXMLProductContainer();
         mypageCtn = new FXMLMyPageContainer();
         invCtn = new FXMLInventoryContainer();
+        receiptCtn = new FXMLReceiptContainer();
         
-        mainBtn1.getChildren().add(new FXMLReceiptButton());
+        mainBtn1.getChildren().add(receiptBtn);
         mainBtn2.getChildren().add(userPageBtn);
         idMainTopLeft.getChildren().add(new FXMLCategoryContainer(t));
         mainBtn0.getChildren().add(inventoryBtn);
@@ -121,6 +127,8 @@ public class FXMLApplicationController implements Initializable {
                     SetMainBody(productCtn);
                 } else if (t.getSelectedToggle() instanceof FXMLUserPageButton) {
                     SetMainBody(mypageCtn);
+                } else if (t.getSelectedToggle() instanceof FXMLReceiptButton) {
+                    SetMainBody(receiptCtn);
                 }
                 
             } else {
@@ -148,6 +156,7 @@ public class FXMLApplicationController implements Initializable {
         INVENTORY_BUTTON,
         CHECKOUT_BUTTON,
         INVENTORY_CONTAINER,
+        RECEIPT_CONTAINER,
     }
     
     public void SetMainBody(Node n) {
@@ -168,6 +177,7 @@ public class FXMLApplicationController implements Initializable {
             case INVENTORY_BUTTON: return inventoryBtn;
             case CHECKOUT_BUTTON: return checkoutBtn;
             case INVENTORY_CONTAINER: return invCtn;
+            case RECEIPT_CONTAINER: return receiptCtn;
             default: return null;
         }
     }
