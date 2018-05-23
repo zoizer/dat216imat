@@ -89,7 +89,6 @@ public class FXMLApplicationController implements Initializable {
     private FXMLReceiptContainer receiptCtn;
     
     private ToggleGroup t;
-    private Customer customer;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
