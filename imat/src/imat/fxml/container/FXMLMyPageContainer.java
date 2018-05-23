@@ -37,7 +37,7 @@ public class FXMLMyPageContainer extends AnchorPane {
 
     //myPage
     @FXML
-    private TextField nameText, streetText, postcodeText, cityText, phoneText, CardNumberText, CVCText;
+    private TextField firstName, lastName, streetText, postcodeText, cityText, phoneText, CardNumberText, CVCText;
     @FXML
     private ComboBox cardTypeText, ValidMonthText, ValidYearText;
     @FXML
@@ -61,18 +61,21 @@ public class FXMLMyPageContainer extends AnchorPane {
         }
         
         
-        UnaryOperator<Change> filter = change -> {
+        UnaryOperator<Change> numberFilter = change -> {
             String text = change.getText();
             if (text.matches("[0-9]*")) return change;
             else return null;
         };
-        TextFormatter<String> numbersOnly = new TextFormatter<>(filter);
+        
         personAlertText = personAlert.getChildren().get(0);
         cardAlertText = cardAlert.getChildren().get(0);
         
         //For cardtype
         cardTypeText.getItems().addAll("Visa", "MasterCard", "American Express", "Diners Club");
-        cardTypeText.getSelectionModel().select("Visa");
+        
+        if (creditcard.getCardType().isEmpty()) cardTypeText.getSelectionModel().select("Visa");
+        else cardTypeText.getSelectionModel().select(creditcard.getCardType());
+        
         cardTypeText.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
             @Override
@@ -82,7 +85,10 @@ public class FXMLMyPageContainer extends AnchorPane {
         });
         //For Valid Month
         ValidMonthText.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
-        ValidMonthText.getSelectionModel().select(0);
+        
+        if (creditcard.getValidMonth() > 0 && creditcard.getValidMonth() <= 12) ValidMonthText.getSelectionModel().select(creditcard.getValidMonth() - 1); // using index not object.
+        else ValidMonthText.getSelectionModel().select(0);
+            
         ValidMonthText.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Integer>() {
 
             @Override
@@ -92,7 +98,10 @@ public class FXMLMyPageContainer extends AnchorPane {
         });
         //For Valid Year
         ValidYearText.getItems().addAll(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025);
-        ValidYearText.getSelectionModel().select(0);
+        
+        if (creditcard.getValidYear() >= 2018 && creditcard.getValidYear() <= 2025) ValidYearText.getSelectionModel().select(creditcard.getValidYear() - 2018);
+        else ValidYearText.getSelectionModel().select(0);
+        
         ValidYearText.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Integer>() {
 
             @Override
@@ -101,15 +110,25 @@ public class FXMLMyPageContainer extends AnchorPane {
             }
         });
         // Cardnumber
+        CardNumberText.setTextFormatter(new TextFormatter<>(numberFilter));
+        
+        if (!creditcard.getCardNumber().isEmpty()) CardNumberText.setText(creditcard.getCardNumber());
+        else CardNumberText.setText("");
+        
         CardNumberText.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
                                 String oldValue, String newValue) {
-
+                
                 creditcard.setCardNumber(newValue);
             }
         });
         //cvc
+        CVCText.setTextFormatter(new TextFormatter<>(numberFilter));
+        
+        if (creditcard.getVerificationCode() >= 0 && creditcard.getVerificationCode() <= 999) CVCText.setText(String.format("%03d", creditcard.getVerificationCode()));
+        else CVCText.setText("");
+        
         CVCText.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
@@ -120,7 +139,10 @@ public class FXMLMyPageContainer extends AnchorPane {
         });
 
         // For name
-        nameText.textProperty().addListener(new ChangeListener<String>() {
+        if (!customer.getFirstName().isEmpty()) firstName.setText(customer.getFirstName());
+        else firstName.setText("");
+        
+        firstName.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
                                 String oldValue, String newValue) {
@@ -128,7 +150,21 @@ public class FXMLMyPageContainer extends AnchorPane {
                 customer.setFirstName(newValue);
             }
         });
+        
+        if (!customer.getLastName().isEmpty()) lastName.setText(customer.getLastName());
+        else lastName.setText("");
+        lastName.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable,
+                                String oldValue, String newValue) {
+
+                customer.setLastName(newValue);
+            }
+        });
+        
         // For street
+        if (!customer.getAddress().isEmpty()) streetText.setText(customer.getAddress());
+        else streetText.setText("");
         streetText.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
@@ -137,24 +173,24 @@ public class FXMLMyPageContainer extends AnchorPane {
                 customer.setAddress(newValue);
             }
         });
+        
         // For poctcode
-    //    postcodeText.setTextFormatter(numbersOnly);
+        if (!customer.getPostCode().isEmpty()) postcodeText.setText(customer.getPostCode());
+        else postcodeText.setText("");
+        
+        postcodeText.setTextFormatter(new TextFormatter<>(numberFilter));
         postcodeText.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
                                 String oldValue, String newValue) {
-                if (newValue.isEmpty()) {}
-                else if (!newValue.matches("\\d*")) { 
-            // THIS FUNCTION WILL BE CALLED AGAIN IF IT DOESNT MATCH FIRST TIME, 
-            // SO DO NOT USE THE STRING IF IT DOESNT MATCH.
-                    postcodeText.setText(newValue.replaceAll("[^\\d]", ""));
-                } else {
-                    customer.setPostCode(newValue);
-                    System.out.println("WORKS");
-                }
+                
             }
         });
+        
         // For city
+        if (!customer.getPostAddress().isEmpty()) cityText.setText(customer.getPostAddress());
+        else cityText.setText("");
+        
         cityText.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
@@ -163,8 +199,11 @@ public class FXMLMyPageContainer extends AnchorPane {
                 customer.setPostAddress(newValue);
             }
         });
+        
         // For phone
-        phoneText.setTextFormatter(numbersOnly);
+        if (!customer.getPhoneNumber().isEmpty()) phoneText.setText(customer.getPhoneNumber());
+        else phoneText.setText("");
+        phoneText.setTextFormatter(new TextFormatter<>(numberFilter));
         phoneText.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
@@ -173,8 +212,8 @@ public class FXMLMyPageContainer extends AnchorPane {
                 customer.setPhoneNumber(newValue);
             }
         });
-
     }
-
+    
+    
 }
 
