@@ -7,15 +7,12 @@ package imat.fxml;
 
 import imat.Imat;
 import imat.fxml.button.FXMLCategoryButton;
-import imat.fxml.container.FXMLCategoryContainer;
+import imat.fxml.container.*;
 import imat.fxml.button.FXMLCheckoutButton;
 import imat.fxml.button.FXMLInventoryButton;
 import imat.fxml.button.FXMLReceiptButton;
 import imat.fxml.button.FXMLUserPageButton;
-import imat.fxml.container.FXMLProductContainer;
-import imat.fxml.container.FXMLInventoryContainer;
-import imat.fxml.container.FXMLMyPageContainer;
-import imat.fxml.container.FXMLReceiptContainer;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -85,6 +82,7 @@ public class FXMLApplicationController implements Initializable {
     private FXMLCheckoutButton checkoutBtn;
     private FXMLProductContainer productCtn;
     private FXMLMyPageContainer mypageCtn;
+    private FXMLCheckoutContainer checkoutCtn;
     private FXMLInventoryContainer invCtn;
     private FXMLReceiptContainer receiptCtn;
     
@@ -108,6 +106,7 @@ public class FXMLApplicationController implements Initializable {
         
         productCtn = new FXMLProductContainer();
         mypageCtn = new FXMLMyPageContainer();
+        checkoutCtn = new FXMLCheckoutContainer();
         invCtn = new FXMLInventoryContainer();
         receiptCtn = new FXMLReceiptContainer();
         
@@ -141,7 +140,11 @@ public class FXMLApplicationController implements Initializable {
                     SetMainBody(productCtn);
                 } else if (t.getSelectedToggle() instanceof FXMLUserPageButton) {
                     SetMainBody(mypageCtn);
-                } else if (t.getSelectedToggle() instanceof FXMLReceiptButton) {
+                }
+                else if (t.getSelectedToggle() instanceof FXMLCheckoutButton) {
+                    SetMainBody(checkoutCtn);
+                }
+                else if (t.getSelectedToggle() instanceof FXMLReceiptButton) {
                     receiptCtn.Update();
                     SetMainBody(receiptCtn);
                 }
