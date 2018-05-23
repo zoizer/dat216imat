@@ -1,4 +1,5 @@
 .button-style{
+    -fx-background-insets: 2px;
     -fx-background-color: #444444;
     -fx-border-width: 4px;
     -fx-border-color: #E09D0D;
@@ -14,6 +15,7 @@
     -fx-border-color: #E05D0D;
 }
 .toggle-style{
+    -fx-background-insets: 1px;
     -fx-background-color: #444444;
     -fx-border-width: 2px;
     -fx-border-color: #E09D0D;

@@ -1,43 +1,215 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<fx:root prefWidth="617.0" stylesheets="@ContainerStyle.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefWidth="617.0" style="-fx-background-color: transparent;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="600.0" prefWidth="617.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="160.0" styleClass="Container-Style">
+      <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox spacing="10.0" styleClass="Container-Style">
                <children>
-                  <TextField fx:id="nameText" layoutX="240.0" layoutY="59.0" prefHeight="27.0" prefWidth="167.0" styleClass="Textfield-Style" />
-                  <TextField fx:id="streetText" layoutX="240.0" layoutY="116.0" prefHeight="27.0" prefWidth="167.0" promptText="Gata" styleClass="Textfield-Style" />
-                  <TextField fx:id="postcodeText" layoutX="240.0" layoutY="148.0" promptText="Postnummer" styleClass="Textfield-Style" />
-                  <TextField fx:id="cityText" layoutX="240.0" layoutY="180.0" promptText="Stad" styleClass="Textfield-Style" />
-                  <Label alignment="CENTER_RIGHT" layoutX="150.0" layoutY="60.0" prefWidth="80.0" styleClass="LabelNormal-Style" text="Namn" />
-                  <Label alignment="CENTER_RIGHT" layoutX="147.0" layoutY="118.0" prefWidth="80.0" styleClass="LabelNormal-Style" text="Adress" />
-                  <Label alignment="CENTER_RIGHT" layoutX="150.0" layoutY="244.0" prefWidth="80.0" styleClass="LabelNormal-Style" text="Telefon" />
-                  <TextField fx:id="phoneText" layoutX="240.0" layoutY="242.0" styleClass="Textfield-Style" />
-                  <Label layoutX="240.0" layoutY="14.0" styleClass="LabelLarger-Style" text="Personuppgifter" />
+                  <VBox>
+                     <children>
+                        <HBox alignment="TOP_CENTER">
+                           <children>
+                              <Label styleClass="LabelLarger-Style" text="Personuppgifter" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="personAlert" alignment="TOP_CENTER">
+                           <children>
+                              <Label styleClass="MyPage-Alert-Text" text="Röda fält är ej ifyllda korrekt." textAlignment="CENTER" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <GridPane hgap="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextField fx:id="nameText" prefWidth="167.0" promptText="Namn" styleClass="MyPage-Entry-Style" GridPane.columnIndex="1" />
+                        <AnchorPane>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="80.0" styleClass="LabelNormal-Style" text="Namn" textAlignment="RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="80.0" styleClass="LabelNormal-Style" text="Adress" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <TextField fx:id="streetText" prefHeight="27.0" prefWidth="167.0" promptText="Gata" styleClass="MyPage-Entry-Style" GridPane.columnIndex="1" />
+                        <TextField fx:id="postcodeText" promptText="Postnummer" styleClass="MyPage-Entry-Style" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="cityText" promptText="Stad" styleClass="MyPage-Entry-Style" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="80.0" styleClass="LabelNormal-Style" text="Telefon" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <TextField fx:id="phoneText" promptText="NNN NNNNNNNN" styleClass="MyPage-Entry-Style" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
                </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="Container-Style">
+               <padding>
+                  <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+               </padding>
+            </VBox>
+            <VBox spacing="10.0" styleClass="Container-Style">
                <children>
-                  <Label layoutX="251.0" layoutY="14.0" styleClass="LabelLarger-Style" text="Kreditkort" />
-                  <TextField fx:id="CardNumberText" layoutX="244.0" layoutY="131.0" prefHeight="27.0" prefWidth="167.0" styleClass="Textfield-Style" />
-                  <TextField fx:id="CVCText" layoutX="244.0" layoutY="237.0" prefHeight="27.0" prefWidth="167.0" styleClass="Textfield-Style" />
-                  <Label alignment="CENTER_RIGHT" layoutX="118.0" layoutY="81.0" prefHeight="24.0" prefWidth="113.0" styleClass="LabelNormal-Style" text="Korttyp" />
-                  <Label alignment="CENTER_RIGHT" layoutX="118.0" layoutY="133.0" prefHeight="24.0" prefWidth="113.0" styleClass="LabelNormal-Style" text="Kortnummer" />
-                  <Label alignment="CENTER_RIGHT" layoutX="118.0" layoutY="185.0" prefHeight="24.0" prefWidth="113.0" styleClass="LabelNormal-Style" text="Giltig" />
-                  <Label alignment="CENTER_RIGHT" layoutX="118.0" layoutY="239.0" prefHeight="24.0" prefWidth="113.0" styleClass="LabelNormal-Style" text="CVC" />
-                  <ComboBox fx:id="cardTypeText" layoutX="244.0" layoutY="79.0" prefHeight="27.0" prefWidth="167.0" styleClass="Textfield-Style" />
-                  <ComboBox fx:id="ValidMonthText" layoutX="244.0" layoutY="183.0" prefHeight="27.0" prefWidth="80.0" styleClass="Textfield-Style" />
-                  <ComboBox fx:id="ValidYearText" layoutX="331.0" layoutY="183.0" prefHeight="27.0" prefWidth="80.0" styleClass="Textfield-Style" />
+                  <VBox>
+                     <children>
+                        <HBox alignment="TOP_CENTER">
+                           <children>
+                              <Label styleClass="LabelLarger-Style" text="Kreditkort" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="cardAlert" alignment="TOP_CENTER">
+                           <children>
+                              <Label styleClass="MyPage-Alert-Text" text="Röda fält är ej ifyllda korrekt." textAlignment="CENTER" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <GridPane hgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="113.0" styleClass="LabelNormal-Style" text="Korttyp" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane GridPane.columnIndex="1">
+                           <children>
+                              <ComboBox fx:id="cardTypeText" styleClass="MyPage-Entry-Style" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="113.0" styleClass="LabelNormal-Style" text="Kortnummer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <TextField fx:id="CardNumberText" promptText="NNNN NNNN NNNN NNNN" styleClass="MyPage-Entry-Style" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="113.0" styleClass="LabelNormal-Style" text="Giltig" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <GridPane hgap="5.0" GridPane.columnIndex="1">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane>
+                                 <children>
+                                    <ComboBox fx:id="ValidMonthText" styleClass="MyPage-Entry-Style" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.columnIndex="1">
+                                 <children>
+                                    <ComboBox fx:id="ValidYearText" styleClass="MyPage-Entry-Style" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefWidth="113.0" styleClass="LabelNormal-Style" text="CVC" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <TextField fx:id="CVCText" promptText="NNN" styleClass="MyPage-Entry-Style" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
                </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+               <padding>
+                  <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
    </children>
+   <stylesheets>
+      <URL value="@ContainerStyle.css" />
+      <URL value="@../Generic.css" />
+   </stylesheets>
 </fx:root>

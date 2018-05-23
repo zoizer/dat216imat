@@ -21,6 +21,12 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.control.TextFormatter.Change;
+import javafx.scene.layout.HBox;
 
 /**
  * FXML extension class
@@ -34,7 +40,10 @@ public class FXMLMyPageContainer extends AnchorPane {
     private TextField nameText, streetText, postcodeText, cityText, phoneText, CardNumberText, CVCText;
     @FXML
     private ComboBox cardTypeText, ValidMonthText, ValidYearText;
+    @FXML
+    private HBox personAlert, cardAlert;
 
+    private Node personAlertText, cardAlertText;
 
     public FXMLMyPageContainer() {
         IMatDataHandler handler = IMatDataHandler.getInstance();
@@ -50,6 +59,17 @@ public class FXMLMyPageContainer extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        
+        
+        UnaryOperator<Change> filter = change -> {
+            String text = change.getText();
+            if (text.matches("[0-9]*")) return change;
+            else return null;
+        };
+        TextFormatter<String> numbersOnly = new TextFormatter<>(filter);
+        personAlertText = personAlert.getChildren().get(0);
+        cardAlertText = cardAlert.getChildren().get(0);
+        
         //For cardtype
         cardTypeText.getItems().addAll("Visa", "MasterCard", "American Express", "Diners Club");
         cardTypeText.getSelectionModel().select("Visa");
@@ -118,12 +138,20 @@ public class FXMLMyPageContainer extends AnchorPane {
             }
         });
         // For poctcode
+    //    postcodeText.setTextFormatter(numbersOnly);
         postcodeText.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,
                                 String oldValue, String newValue) {
-
-                customer.setPostCode(newValue);
+                if (newValue.isEmpty()) {}
+                else if (!newValue.matches("\\d*")) { 
+            // THIS FUNCTION WILL BE CALLED AGAIN IF IT DOESNT MATCH FIRST TIME, 
+            // SO DO NOT USE THE STRING IF IT DOESNT MATCH.
+                    postcodeText.setText(newValue.replaceAll("[^\\d]", ""));
+                } else {
+                    customer.setPostCode(newValue);
+                    System.out.println("WORKS");
+                }
             }
         });
         // For city
@@ -136,6 +164,7 @@ public class FXMLMyPageContainer extends AnchorPane {
             }
         });
         // For phone
+        phoneText.setTextFormatter(numbersOnly);
         phoneText.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable,

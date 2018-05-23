@@ -3,18 +3,31 @@
     -fx-border-width: 4px;
     -fx-border-color: #666666;
 }
-.Textfield-Style{
-    -fx-background-color: #C0C0C0;
-}
 .LabelNormal-Style{
-
+    -fx-font-family: "System Bold";
+    -fx-text-fill: #C3C3C3;
     -fx-font-size: 20px;
-    -fx-font-family: "Gill Sans";
     -fx-font-weight: lighter;
 }
 .LabelLarger-Style{
-
+    -fx-font-family: "System Bold";
+    -fx-text-fill: #C3C3C3;
     -fx-font-size: 26px;
-    -fx-font-family: "Gill Sans";
+    -fx-font-weight: lighter;
+}
+.MyPage-Entry-Style{
+    -fx-background-insets: 2px;
+    -fx-font-family: "System Bold";
+    -fx-font-size: 16px;
+    -fx-background-color: #C0C0C0;
+    -fx-text-fill: #303030;
+    -fx-prompt-text-fill: #575757;
+    -fx-border-width: 3px;
+    -fx-border-color: #666666;
+}
+.MyPage-Alert-Text{
+    -fx-font-family: "System Bold";
+    -fx-text-fill: red;
+    -fx-font-size: 20px;
     -fx-font-weight: lighter;
 }
