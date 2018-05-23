@@ -3,6 +3,11 @@
     -fx-border-width: 4px;
     -fx-border-color: #666666;
 }
+.Container-Style-Green{
+    -fx-background-color: #444444;
+    -fx-border-width: 4px;
+    -fx-border-color: #228B22;
+}
 .LabelNormal-Style{
     -fx-font-family: "System Bold";
     -fx-text-fill: #C3C3C3;

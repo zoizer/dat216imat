@@ -17,7 +17,7 @@
    <children>
       <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="77.0" prefWidth="617.0" styleClass="Container-Style">
+            <VBox prefHeight="77.0" prefWidth="617.0" styleClass="Container-Style-Green">
                <children>
                   <HBox prefHeight="100.0" prefWidth="609.0">
                      <children>
@@ -30,9 +30,18 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label styleClass="LabelLarger-Style" text="Totalt pris:" GridPane.halignment="RIGHT" />
-                              <Label styleClass="LabelLarger-Style" text="0 kr" GridPane.columnIndex="1" />
+                              <Label styleClass="LabelLarger-Style" text="Totalt pris:" GridPane.halignment="RIGHT">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin></Label>
+                              <Label fx:id="priceLabel" styleClass="LabelLarger-Style" text="\\%priceLabel.text" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin></Label>
                            </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </GridPane>
                      </children>
                   </HBox>
@@ -241,7 +250,7 @@
             </VBox>
             <VBox prefHeight="91.0" prefWidth="617.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0" styleClass="Container-Style">
                      <children>
                         <GridPane prefHeight="91.0" prefWidth="617.0">
                           <columnConstraints>
@@ -252,8 +261,8 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button mnemonicParsing="false" text="Button" />
-                              <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" />
+                              <Button fx:id="cancelButton" mnemonicParsing="false" styleClass="button-style-cancel" stylesheets="@../button/ButtonStyle.css" text="Avbryt köp" GridPane.halignment="CENTER" />
+                              <Button fx:id="okButton" mnemonicParsing="false" styleClass="button-style-ok" stylesheets="@../button/ButtonStyle.css" text="Slutför köp" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                            </children>
                         </GridPane>
                      </children>

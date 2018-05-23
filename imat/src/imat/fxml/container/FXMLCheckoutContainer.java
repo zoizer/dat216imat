@@ -10,15 +10,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.*;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.ShoppingCart;
 
 import java.io.IOException;
 import java.util.function.UnaryOperator;
@@ -37,13 +37,20 @@ public class FXMLCheckoutContainer extends AnchorPane {
     private ComboBox cardTypeText, ValidMonthText, ValidYearText;
     @FXML
     private HBox personAlert, cardAlert;
-
+    @FXML
     private Node personAlertText, cardAlertText;
+    @FXML
+    private Button cancelButton, okButton;
+    @FXML
+    private Label priceLabel;
+
+
 
     public FXMLCheckoutContainer() {
         IMatDataHandler handler = IMatDataHandler.getInstance();
         Customer customer = handler.getCustomer();
         CreditCard creditcard = handler.getCreditCard();
+        ShoppingCart shoppingCart = handler.getShoppingCart();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLCheckoutContainer.fxml"));
         fxmlLoader.setRoot(this);
@@ -64,6 +71,9 @@ public class FXMLCheckoutContainer extends AnchorPane {
         
         personAlertText = personAlert.getChildren().get(0);
         cardAlertText = cardAlert.getChildren().get(0);
+
+        priceLabel.textProperty().setValue(Double.toString(shoppingCart.getTotal()) + " kr"); //initiera
+
         
         //For cardtype
         cardTypeText.getItems().addAll("Visa", "MasterCard", "American Express", "Diners Club");
