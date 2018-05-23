@@ -98,11 +98,10 @@ public class FXMLApplicationController implements Initializable {
         userPageBtn = new FXMLUserPageButton();
         inventoryBtn = new FXMLInventoryButton();
         receiptBtn = new FXMLReceiptButton();
+        checkoutBtn = new FXMLCheckoutButton();
         userPageBtn.setToggleGroup(t);
         inventoryBtn.setToggleGroup(t);
         receiptBtn.setToggleGroup(t);
-        
-        checkoutBtn = new FXMLCheckoutButton();
         
         productCtn = new FXMLProductContainer();
         mypageCtn = new FXMLMyPageContainer();
