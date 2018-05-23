@@ -122,6 +122,7 @@ public class FXMLApplicationController implements Initializable {
         
         t.selectedToggleProperty().addListener((ChangeListener<Toggle>) (ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) -> {
             if (t.getSelectedToggle() != null) {
+                idSearchBar.setText("");
                 if (t.getSelectedToggle() instanceof FXMLCategoryButton) {
                     FXMLCategoryButton selected = (FXMLCategoryButton) t.getSelectedToggle();
                     SetMainBody(productCtn);
@@ -151,6 +152,17 @@ public class FXMLApplicationController implements Initializable {
                 SetMainBody(productCtn);
             }
                 
+        });
+        
+        idSearchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.isEmpty()) {
+                // NOOP
+            } else {
+                t.selectToggle(null);
+                productCtn.SetSearchString(newValue);
+                productCtn.Reload();
+                SetMainBody(productCtn);
+            }
         });
 
     }    
