@@ -102,6 +102,7 @@ public class FXMLApplicationController implements Initializable {
         userPageBtn.setToggleGroup(t);
         inventoryBtn.setToggleGroup(t);
         receiptBtn.setToggleGroup(t);
+        checkoutBtn.setToggleGroup(t);
         
         productCtn = new FXMLProductContainer();
         mypageCtn = new FXMLMyPageContainer();
