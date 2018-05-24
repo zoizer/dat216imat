@@ -21,6 +21,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Order;
@@ -42,6 +44,15 @@ public class FXMLReceiptContainer extends AnchorPane {
     @FXML
     private VBox receiptProduct;
     
+    @FXML
+    private HBox noreceipt;
+    
+    @FXML
+    private HBox noselect;
+    
+    private HBox varNoReceipt;
+    private HBox varNoSelect;
+    
     public FXMLReceiptContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLReceiptContainer.fxml"));
         fxmlLoader.setRoot(this);
@@ -53,20 +64,21 @@ public class FXMLReceiptContainer extends AnchorPane {
             throw new RuntimeException(exception);
         }
         
+        varNoReceipt = noreceipt;
+        varNoSelect = noselect;
         t = new ToggleGroup();
-        old = IMatDataHandler.getInstance().getOrders();
+        /*old = IMatDataHandler.getInstance().getOrders();
         for (Order e : old) {
             receipt.getChildren().add(new FXMLReceiptItem(e, t, this));
-        }
+        }*/
+        Update();
         // doubt it really matter that the old ReceiptItems are memory leaked in ToggleGroup.
         
         t.selectedToggleProperty().addListener((ChangeListener<Toggle>) (ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) -> {
             if (t.getSelectedToggle() != null) {
                 System.out.println("RECEIPT TOGGLE: " + t.getSelectedToggle().toString());
                 FXMLReceiptItem i = (FXMLReceiptItem)t.getSelectedToggle();
-                for (ShoppingItem e : i.GetOrder().getItems()) {
-                    receiptProduct.getChildren().add(new FXMLReceiptProductItem(e.getProduct(), e.getAmount()));
-                }
+                UpdateReceiptProducts(i);
             }
             
             System.out.println("RECEIPT TOGGLE: null");
@@ -81,7 +93,26 @@ public class FXMLReceiptContainer extends AnchorPane {
             for (Order e : old) {
                 receipt.getChildren().add(new FXMLReceiptItem(e, t, this));
             }
-            receiptProduct.getChildren().clear(); // clear children.
+            UpdateReceiptProducts(null);
+        }
+        
+        if (receipt.getChildren().isEmpty()) {
+            receipt.getChildren().add(varNoReceipt);
+        }
+    }
+    
+    private void UpdateReceiptProducts(FXMLReceiptItem i) {
+        receiptProduct.getChildren().clear();
+        if (i == null) {
+            // 
+        } else {
+            for (ShoppingItem e : i.GetOrder().getItems()) {
+                receiptProduct.getChildren().add(new FXMLReceiptProductItem(e.getProduct(), e.getAmount()));
+            }
+        }
+        
+        if (receiptProduct.getChildren().isEmpty()) {
+            receiptProduct.getChildren().add(varNoSelect);
         }
     }
     

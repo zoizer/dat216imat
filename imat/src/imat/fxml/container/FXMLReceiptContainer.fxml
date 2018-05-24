@@ -4,13 +4,13 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-
 
 <fx:root prefWidth="704.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -32,12 +32,20 @@
                               <Label styleClass="text-large" text="Kvitto" />
                            </children>
                         </HBox>
-                        <VBox fx:id="receipt" />
+                        <Separator prefWidth="200.0" />
+                        <VBox fx:id="receipt">
+                           <children>
+                              <HBox fx:id="noreceipt" alignment="TOP_CENTER">
+                                 <children>
+                                    <Label styleClass="text-medium-title" text="Det finns inga tidigare köp" />
+                                 </children>
+                              </HBox>
+                           </children></VBox>
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <VBox GridPane.columnIndex="1">
+            <VBox fx:id="selectedReceiptCtn" GridPane.columnIndex="1">
                <children>
                   <VBox styleClass="Container-Style">
                      <children>
@@ -56,7 +64,16 @@
                               <Label styleClass="text-medium-title" text="Pris" GridPane.columnIndex="2" />
                            </children>
                         </GridPane>
-                        <VBox fx:id="receiptProduct" />
+                        <Separator prefWidth="200.0" />
+                        <VBox fx:id="receiptProduct">
+                           <children>
+                              <HBox fx:id="noselect" alignment="TOP_CENTER">
+                                 <children>
+                                    <Label styleClass="text-medium-title" text="Inget köp valt" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                   <GridPane alignment="TOP_CENTER" prefHeight="80.0">

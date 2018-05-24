@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
@@ -32,6 +33,12 @@ public class FXMLInventoryContainer extends AnchorPane {
     @FXML
     private GridPane header;
     
+    @FXML
+    private HBox noinventory;
+    
+    private HBox varNoInventory;
+    private boolean hasInventory;
+    
     public FXMLInventoryContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLInventoryContainer.fxml"));
         fxmlLoader.setRoot(this);
@@ -46,10 +53,10 @@ public class FXMLInventoryContainer extends AnchorPane {
             throw new RuntimeException(exception);
         }
         
-        /**************** TEMPORARY  *******************/
+        varNoInventory = noinventory;
+        
         List<Product> p = IMatDataHandler.getInstance().getProducts();
         for (Product e : p) {
-           // UpdateInventory(e, 1);
            items.put(e, new FXMLInventoryProductItem(e));
         }
     }
@@ -76,10 +83,20 @@ public class FXMLInventoryContainer extends AnchorPane {
     private void HideProduct(FXMLInventoryProductItem p) { // hide product from flow.
         p.Disable();
         vbox.getChildren().remove(p);
+        
+        if (vbox.getChildren().isEmpty()) {
+            vbox.getChildren().add(varNoInventory);
+            hasInventory = false;
+        }
     }
     
     private void DisplayProduct(FXMLInventoryProductItem p) {
+        if (!hasInventory) {
+            vbox.getChildren().clear();
+        }
+        
         p.Enable();
         vbox.getChildren().add(p);
+        hasInventory = true;
     }
 }

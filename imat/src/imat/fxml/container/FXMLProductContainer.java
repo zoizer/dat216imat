@@ -13,6 +13,7 @@ import java.util.Map;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
@@ -26,12 +27,17 @@ import se.chalmers.cse.dat216.project.ProductCategory;
 public class FXMLProductContainer extends AnchorPane {
     @FXML
     private VBox vb;
+    @FXML
+    private HBox empty;
+    
     private ProductCategory activeFilter;
     private Map<Product, FXMLProductItem> productMap = new HashMap<>();
     private String searchString = null;
     private Product singleProduct = null;
     private boolean favFilter = false;
     private boolean shoppingCartFilter = false;
+    
+    private HBox varEmpty;
     
     public FXMLProductContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLProductContainer.fxml"));
@@ -44,11 +50,15 @@ public class FXMLProductContainer extends AnchorPane {
             throw new RuntimeException(exception);
         }
         
+        varEmpty = empty;
+        
+        
         List<Product> p = IMatDataHandler.getInstance().getProducts();
         for (Product e : p) {
             productMap.put(e, new FXMLProductItem(e));
-            vb.getChildren().add(productMap.get(e));
         }
+        
+        Reload();
     }
     
     public FXMLProductItem GetProductItem(Product p) {
@@ -88,7 +98,7 @@ public class FXMLProductContainer extends AnchorPane {
         shoppingCartFilter = false;
     }
     
-    public void Reload() {
+    public final void Reload() {
         vb.getChildren().clear();
         if (activeFilter != null) {
             List<Product> l = IMatDataHandler.getInstance().getProducts(activeFilter);
@@ -115,6 +125,9 @@ public class FXMLProductContainer extends AnchorPane {
             for (Product e : l) {
                 vb.getChildren().add(productMap.get(e));
             }
+        }
+        if (vb.getChildren().isEmpty()) {
+            vb.getChildren().add(varEmpty);
         }
     }
 }
