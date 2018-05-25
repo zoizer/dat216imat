@@ -5,6 +5,7 @@
  */
 package imat.fxml.container;
 
+import imat.fxml.FXMLApplicationController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -43,7 +44,7 @@ public class FXMLMyPageContainer extends AnchorPane {
     private int customerErrorCount, cardErrorCount;
     
     private boolean bFirstName, bLastName, bStreet, bPostcode, bCity, bPhone, bCardnbr, bCvc;
-
+    
     public FXMLMyPageContainer() {
         IMatDataHandler handler = IMatDataHandler.getInstance();
         Customer customer = handler.getCustomer();
@@ -322,6 +323,15 @@ public class FXMLMyPageContainer extends AnchorPane {
         if (cardErrorCount > 0) {
             cardAlert.getChildren().add(cardAlertText);
         }
+        
+        FXMLCheckoutContainer co = (FXMLCheckoutContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.CHECKOUT_CONTAINER);
+        if (co != null) {
+            co.SetOK(IsOK());
+        }
+    }
+    
+    public boolean IsOK() {
+        return customerErrorCount == 0 && cardErrorCount == 0;
     }
 }
 

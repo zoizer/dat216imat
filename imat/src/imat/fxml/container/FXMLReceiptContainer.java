@@ -87,6 +87,7 @@ public class FXMLReceiptContainer extends AnchorPane {
     
     public void Update() {
         List<Order> l = IMatDataHandler.getInstance().getOrders();
+        System.out.println(l);
         if (!l.equals(old)) {
             receipt.getChildren().clear();
             old = l;

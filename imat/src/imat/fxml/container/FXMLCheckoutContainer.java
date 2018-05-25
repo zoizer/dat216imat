@@ -64,7 +64,7 @@ public class FXMLCheckoutContainer extends AnchorPane {
         priceLabel.setText(Double.toString(Math.round(shoppingCart.getTotal()*1d)) + " kr"); //initiera
         mypage = (FXMLMyPageContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.MY_PAGE_CONTAINER);
         inv = (FXMLInventoryContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.INVENTORY_CONTAINER);
-        okButton.setDisable(true);
+        okButton.setDisable(!mypage.IsOK());
     }
 
     public void Activate() {
@@ -76,13 +76,20 @@ public class FXMLCheckoutContainer extends AnchorPane {
     
     @FXML
     protected void abort(Event ev) {
-        System.out.println("ABORT");
         FXMLApplicationController.Get().DeselectButtons();
     }
     
     @FXML
     protected void confirm(Event ev) {
         System.out.println("CONFIRM");
+        IMatDataHandler.getInstance().placeOrder(false);
+        inv.ClearShoppingCart();
+        FXMLApplicationController a = FXMLApplicationController.Get();
+        a.SetMainBody(a.GetSceneNode(FXMLApplicationController.SceneNode.CONFIRM_CONTAINER));
     }
+    
+    public void SetOK(boolean b) {
+        okButton.setDisable(!b);
+    } 
 }
 

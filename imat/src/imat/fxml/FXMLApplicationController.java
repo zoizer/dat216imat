@@ -85,6 +85,7 @@ public class FXMLApplicationController implements Initializable {
     private FXMLCheckoutContainer checkoutCtn;
     private FXMLInventoryContainer invCtn;
     private FXMLReceiptContainer receiptCtn;
+    private FXMLConfirmationContainer confirmCtn;
     
     private ToggleGroup t;
     
@@ -109,6 +110,7 @@ public class FXMLApplicationController implements Initializable {
         invCtn = new FXMLInventoryContainer();
         checkoutCtn = new FXMLCheckoutContainer();
         receiptCtn = new FXMLReceiptContainer();
+        confirmCtn = new FXMLConfirmationContainer();
         
         mainBtn1.getChildren().add(receiptBtn);
         mainBtn2.getChildren().add(userPageBtn);
@@ -187,6 +189,8 @@ public class FXMLApplicationController implements Initializable {
         CHECKOUT_BUTTON,
         INVENTORY_CONTAINER,
         RECEIPT_CONTAINER,
+        CHECKOUT_CONTAINER,
+        CONFIRM_CONTAINER,
     }
     
     public void SetMainBody(Node n) {
@@ -208,6 +212,8 @@ public class FXMLApplicationController implements Initializable {
             case CHECKOUT_BUTTON: return checkoutBtn;
             case INVENTORY_CONTAINER: return invCtn;
             case RECEIPT_CONTAINER: return receiptCtn;
+            case CHECKOUT_CONTAINER: return checkoutCtn;
+            case CONFIRM_CONTAINER: return confirmCtn;
             default: return null;
         }
     }
