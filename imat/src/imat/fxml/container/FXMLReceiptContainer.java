@@ -18,6 +18,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
@@ -50,6 +51,15 @@ public class FXMLReceiptContainer extends AnchorPane {
     @FXML
     private HBox noselect;
     
+    @FXML
+    private VBox selectedReceiptCtn;
+    
+    @FXML
+    private Label ordertext;
+    
+    @FXML
+    private VBox orderid;
+    
     private HBox varNoReceipt;
     private HBox varNoSelect;
     
@@ -67,6 +77,7 @@ public class FXMLReceiptContainer extends AnchorPane {
         varNoReceipt = noreceipt;
         varNoSelect = noselect;
         t = new ToggleGroup();
+        selectedReceiptCtn.getChildren().remove(orderid);
         /*old = IMatDataHandler.getInstance().getOrders();
         for (Order e : old) {
             receipt.getChildren().add(new FXMLReceiptItem(e, t, this));
@@ -75,18 +86,21 @@ public class FXMLReceiptContainer extends AnchorPane {
         // doubt it really matter that the old ReceiptItems are memory leaked in ToggleGroup.
         
         t.selectedToggleProperty().addListener((ChangeListener<Toggle>) (ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) -> {
+            selectedReceiptCtn.getChildren().remove(orderid);
             if (t.getSelectedToggle() != null) {
-                System.out.println("RECEIPT TOGGLE: " + t.getSelectedToggle().toString());
                 FXMLReceiptItem i = (FXMLReceiptItem)t.getSelectedToggle();
                 UpdateReceiptProducts(i);
+                selectedReceiptCtn.getChildren().add(orderid);
+                ordertext.setText(String.valueOf(i.GetOrder().getOrderNumber()));
+            } else {
+                UpdateReceiptProducts(null);
             }
-            
-            System.out.println("RECEIPT TOGGLE: null");
         });
+        
+        
     }
     
     public void Update() {
-        System.out.println("HEllo");
         List<Order> l = IMatDataHandler.getInstance().getOrders();
         System.out.println(l);
         if (true) { // used useless optimization here that contained a bug.
@@ -96,7 +110,6 @@ public class FXMLReceiptContainer extends AnchorPane {
                 receipt.getChildren().add(new FXMLReceiptItem(e, t, this));
             }
             UpdateReceiptProducts(null);
-            System.out.println("SEEMS I CANT SEE THIS");
         }
         
         if (receipt.getChildren().isEmpty()) {

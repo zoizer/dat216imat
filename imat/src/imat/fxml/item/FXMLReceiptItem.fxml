@@ -4,8 +4,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.ToggleButton?>
 
-
-<fx:root mnemonicParsing="false" onMouseClicked="#clickReceipt" text="&lt;date&gt;" type="ToggleButton" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#clickReceipt" text="&lt;date&gt;" textAlignment="CENTER" type="ToggleButton" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
       <URL value="@ItemStyle.css" />
       <URL value="@../Generic.css" />

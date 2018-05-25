@@ -23,6 +23,11 @@
 .Item-Style-Product:pressed{
     
 }
+.item-Style-Receipt-Product{
+    -fx-background-color: #444444;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+}
 .Item-Style-Simple-Button{
     -fx-background-color: transparent;
     -fx-border-width: 1px;
