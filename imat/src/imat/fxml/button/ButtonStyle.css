@@ -3,6 +3,7 @@
     -fx-background-color: #444444;
     -fx-border-width: 4px;
     -fx-border-color: #E09D0D;
+    -fx-padding: 0;
 }
 .button-style-cancel{
     -fx-background-insets: 2px;
