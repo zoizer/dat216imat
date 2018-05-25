@@ -7,8 +7,6 @@ package imat.fxml.container;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -74,21 +72,7 @@ public class FXMLCheckoutContainer extends AnchorPane {
         personAlertText = personAlert.getChildren().get(0);
         cardAlertText = cardAlert.getChildren().get(0);
 
-        okButton = new Button();
         priceLabel.textProperty().setValue(Double.toString(shoppingCart.getTotal()) + " kr"); //initiera
-
-        //When okButton clicked
-        okButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                handler.placeOrder();
-                //show comfirmation container
-            }
-        });
-        cancelButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                //show product container
-            }
-        });
 
         
         //For cardtype

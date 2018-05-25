@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <fx:root prefWidth="617.0" style="-fx-background-color: transparent;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -249,7 +248,7 @@
                   <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                </padding>
             </VBox>
-            <VBox prefHeight="91.0" prefWidth="617.0" styleClass="Container-Style-Green">
+            <VBox prefHeight="91.0" prefWidth="617.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" styleClass="Container-Style">
                      <children>
@@ -262,14 +261,8 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="cancelButton" mnemonicParsing="false" styleClass="button-style-cancel" stylesheets="@../button/ButtonStyle.css" text="Avbryt köp" GridPane.halignment="CENTER">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font></Button>
-                              <Button fx:id="okButton" mnemonicParsing="false" styleClass="button-style-ok" stylesheets="@../button/ButtonStyle.css" text="Slutför köp" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font></Button>
+                              <Button fx:id="cancelButton" mnemonicParsing="false" styleClass="button-style-cancel" stylesheets="@../button/ButtonStyle.css" text="Avbryt köp" GridPane.halignment="CENTER" />
+                              <Button fx:id="okButton" mnemonicParsing="false" styleClass="button-style-ok" stylesheets="@../button/ButtonStyle.css" text="Slutför köp" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                            </children>
                         </GridPane>
                      </children>

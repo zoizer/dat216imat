@@ -17,6 +17,18 @@
     -fx-border-width: 4px;
     -fx-border-color: #006400;
 }
+.button-style-cancel{
+    -fx-background-insets: 2px;
+    -fx-background-color: red;
+    -fx-border-width: 4px;
+    -fx-border-color: #8B0000;
+}
+.button-style-ok{
+    -fx-background-insets: 2px;
+    -fx-background-color: #008000;
+    -fx-border-width: 4px;
+    -fx-border-color: #006400;
+}
 .button-style:hover{
     -fx-border-color: #E05D0D;
 }
