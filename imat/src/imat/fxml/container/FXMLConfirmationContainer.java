@@ -21,7 +21,12 @@ import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.function.UnaryOperator;
+import javafx.scene.control.Label;
 
 /**
  * FXML extension class
@@ -30,6 +35,9 @@ import java.util.function.UnaryOperator;
  */
 public class FXMLConfirmationContainer extends AnchorPane {
 
+    @FXML
+    private Label date;
+    
     public FXMLConfirmationContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLConfirmationContainer.fxml"));
         fxmlLoader.setRoot(this);
@@ -40,7 +48,16 @@ public class FXMLConfirmationContainer extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    }
+    
+    public void SetOrderDate(Date d) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        //dateFormat.format(d);
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        c.add(Calendar.DATE, 1);
         
+        date.setText(dateFormat.format(c.getTime()));
     }
 }
 

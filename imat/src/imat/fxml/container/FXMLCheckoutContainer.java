@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.function.UnaryOperator;
 import javafx.event.Event;
 import javafx.scene.layout.VBox;
+import se.chalmers.cse.dat216.project.Order;
 
 /**
  * FXML extension class
@@ -45,6 +46,8 @@ public class FXMLCheckoutContainer extends AnchorPane {
     private FXMLMyPageContainer mypage;
     private FXMLInventoryContainer inv;
     private ShoppingCart shoppingCart;
+    private boolean userOK;
+    private boolean cartOK;
 
     public FXMLCheckoutContainer() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/imat/fxml/container/FXMLCheckoutContainer.fxml"));
@@ -64,7 +67,8 @@ public class FXMLCheckoutContainer extends AnchorPane {
         priceLabel.setText(Double.toString(Math.round(shoppingCart.getTotal()*1d)) + " kr"); //initiera
         mypage = (FXMLMyPageContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.MY_PAGE_CONTAINER);
         inv = (FXMLInventoryContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.INVENTORY_CONTAINER);
-        okButton.setDisable(!mypage.IsOK());
+        SetUserOK(mypage.IsOK());
+        
     }
 
     public void Activate() {
@@ -72,6 +76,8 @@ public class FXMLCheckoutContainer extends AnchorPane {
         user.getChildren().clear();
         user.getChildren().add(mypage);
         priceLabel.setText(Double.toString(shoppingCart.getTotal()) + " kr"); //initiera
+        cartOK = !inv.IsEmpty();
+        okButton.setDisable(!(userOK && cartOK));
     }
     
     @FXML
@@ -81,15 +87,17 @@ public class FXMLCheckoutContainer extends AnchorPane {
     
     @FXML
     protected void confirm(Event ev) {
-        System.out.println("CONFIRM");
-        IMatDataHandler.getInstance().placeOrder(false);
+        Order o = IMatDataHandler.getInstance().placeOrder(false);
         inv.ClearShoppingCart();
         FXMLApplicationController a = FXMLApplicationController.Get();
-        a.SetMainBody(a.GetSceneNode(FXMLApplicationController.SceneNode.CONFIRM_CONTAINER));
+        FXMLConfirmationContainer c = (FXMLConfirmationContainer)a.GetSceneNode(FXMLApplicationController.SceneNode.CONFIRM_CONTAINER);
+        c.SetOrderDate(o.getDate());
+        a.SetMainBody(c);
     }
     
-    public void SetOK(boolean b) {
-        okButton.setDisable(!b);
+    public void SetUserOK(boolean b) {
+        userOK = b;
+        okButton.setDisable(!(b && cartOK));
     } 
 }
 

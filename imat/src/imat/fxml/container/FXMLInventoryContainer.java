@@ -120,4 +120,11 @@ public class FXMLInventoryContainer extends AnchorPane {
             }
         }
     }
+    
+    public boolean IsEmpty() {
+        for (Map.Entry<Product, FXMLInventoryProductItem> e : items.entrySet()) {
+            if (e.getValue().IsActive()) return false;
+        }
+        return true;
+    }
 }

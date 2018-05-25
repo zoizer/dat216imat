@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefWidth="617.0" style="-fx-background-color: transparent;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefWidth="617.0" style="-fx-background-color: transparent;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -31,14 +31,18 @@
                                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="288.0" minWidth="10.0" prefWidth="288.0" />
                                 </columnConstraints>
                                 <rowConstraints>
-                                  <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label styleClass="LabelNormal-Style" text="Dina varor levereras den" />
-                                    <Label text="Label" GridPane.columnIndex="1" />
-                                    <Label styleClass="LabelNormal-Style" text="mellan klockan" GridPane.rowIndex="1" />
-                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="date" styleClass="text-medium-title" text="&lt;Date&gt;" GridPane.columnIndex="1" />
+                                    <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <Label styleClass="LabelNormal-Style" text="Dina varor levereras:" />
+                                       </children>
+                                       <padding>
+                                          <Insets right="5.0" />
+                                       </padding>
+                                    </VBox>
                                  </children>
                               </GridPane>
                            </children>

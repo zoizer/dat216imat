@@ -133,6 +133,6 @@ public class FXMLReceiptContainer extends AnchorPane {
     }
     
     public void clickReceipt(Event ev) {
-        System.out.println("EVENT: " + ev.toString()); // probably useless.
+        // probably useless.
     }
 }

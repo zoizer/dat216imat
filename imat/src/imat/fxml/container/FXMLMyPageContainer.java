@@ -326,7 +326,7 @@ public class FXMLMyPageContainer extends AnchorPane {
         
         FXMLCheckoutContainer co = (FXMLCheckoutContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.CHECKOUT_CONTAINER);
         if (co != null) {
-            co.SetOK(IsOK());
+            co.SetUserOK(IsOK());
         }
     }
     
