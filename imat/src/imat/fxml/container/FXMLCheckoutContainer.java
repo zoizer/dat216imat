@@ -61,7 +61,7 @@ public class FXMLCheckoutContainer extends AnchorPane {
         Customer customer = handler.getCustomer();
         CreditCard creditcard = handler.getCreditCard();
         shoppingCart = handler.getShoppingCart();
-        priceLabel.setText(Double.toString(shoppingCart.getTotal()) + " kr"); //initiera
+        priceLabel.setText(Double.toString(Math.round(shoppingCart.getTotal()*1d)) + " kr"); //initiera
         mypage = (FXMLMyPageContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.MY_PAGE_CONTAINER);
         inv = (FXMLInventoryContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.INVENTORY_CONTAINER);
         okButton.setDisable(true);
