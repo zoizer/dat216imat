@@ -6,12 +6,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" styleClass="toggle-style" textAlignment="CENTER" type="ToggleButton" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="toggle-style" textAlignment="CENTER" type="ToggleButton" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
       <StackPane>
          <children>
             <ImageView fx:id="img" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="text" styleClass="text-medium-title" text="&lt;Category&gt;" textFill="#c3c3c3" wrapText="true" />
+            <Label fx:id="text" graphicTextGap="0.0" styleClass="text-medium-title" text="&lt;Category&gt;" textAlignment="CENTER" textFill="#c3c3c3" wrapText="true" />
          </children>
       </StackPane>
    </graphic>

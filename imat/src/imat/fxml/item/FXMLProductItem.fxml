@@ -30,6 +30,7 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="66.0" minWidth="66.0" prefWidth="66.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="66.0" minWidth="66.0" prefWidth="66.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="66.0" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="66.0" minWidth="66.0" prefWidth="66.0" />
               </columnConstraints>
@@ -40,7 +41,21 @@
                   <Label fx:id="name" styleClass="text-small" text="&lt;ProductName&gt;" />
                   <Label fx:id="cartinfo" styleClass="text-small" GridPane.columnIndex="1" />
                   <Label fx:id="price" styleClass="text-small" text="&lt;Price&gt;" GridPane.columnIndex="2" />
-                  <StackPane onMouseClicked="#putback" styleClass="Item-Style-Simple-Button" GridPane.columnIndex="3">
+                  <StackPane fx:id="spfav" onMouseClicked="#favorite" styleClass="Item-Style-Simple-Button" GridPane.columnIndex="3">
+                     <children>
+                        <ImageView fx:id="imgunfav" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/favorite_gray.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgfav" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/favorite.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <StackPane onMouseClicked="#putback" styleClass="Item-Style-Simple-Button" GridPane.columnIndex="4">
                      <children>
                         <ImageView fx:id="imgputback" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,7 +67,7 @@
                         <Insets />
                      </GridPane.margin>
                   </StackPane>
-                  <StackPane onMouseClicked="#take" styleClass="Item-Style-Simple-Button" GridPane.columnIndex="5">
+                  <StackPane onMouseClicked="#take" styleClass="Item-Style-Simple-Button" GridPane.columnIndex="6">
                      <children>
                         <ImageView fx:id="imgtake" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -64,7 +79,7 @@
                         <Insets />
                      </GridPane.margin>
                   </StackPane>
-                  <Spinner fx:id="spin" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="split-arrows-vertical" GridPane.columnIndex="4" />
+                  <Spinner fx:id="spin" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" styleClass="split-arrows-vertical" GridPane.columnIndex="5" />
                </children>
             </GridPane>
          </children>

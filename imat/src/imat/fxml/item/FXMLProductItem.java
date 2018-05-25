@@ -19,8 +19,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -47,6 +49,12 @@ public class FXMLProductItem extends AnchorPane {
     private Label price;
     
     @FXML
+    private ImageView imgunfav;
+    
+    @FXML
+    private ImageView imgfav;
+    
+    @FXML
     private ImageView imgputback;
     
     @FXML
@@ -54,6 +62,9 @@ public class FXMLProductItem extends AnchorPane {
     
     @FXML
     private Spinner spin;
+    
+    @FXML
+    private StackPane spfav;
     
     private Product p;
     private double amount;
@@ -69,8 +80,16 @@ public class FXMLProductItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
         
+       // Tooltip.install(spfav, new Tooltip("Klicka här för att lägga till produkten som en favorit."));
+        
         this.p = p;
         amount = 0.0f;
+        
+        if (IMatDataHandler.getInstance().isFavorite(p)) {
+            imgunfav.setVisible(false);
+        } else {
+            imgfav.setVisible(false);
+        }
         
         if (p.getUnitSuffix().equals("kg")) {
             SpinnerValueFactory.DoubleSpinnerValueFactory valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1, 10.0, 0.1, 0.1);
@@ -163,5 +182,18 @@ public class FXMLProductItem extends AnchorPane {
         else d = ((Integer)spin.getValueFactory().getValue()).doubleValue();
         
         ((FXMLInventoryContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.INVENTORY_CONTAINER)).UpdateInventory(p, d);
+    }
+    
+    @FXML
+    protected void favorite(Event event) {
+        if (IMatDataHandler.getInstance().isFavorite(p)) {
+            imgunfav.setVisible(true);
+            imgfav.setVisible(false);
+            IMatDataHandler.getInstance().removeFavorite(p);
+        } else {
+            imgunfav.setVisible(false);
+            imgfav.setVisible(true);
+            IMatDataHandler.getInstance().addFavorite(p);
+        }
     }
 }

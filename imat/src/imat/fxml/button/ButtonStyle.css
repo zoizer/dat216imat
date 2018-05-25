@@ -32,6 +32,7 @@
     -fx-background-color: #444444;
     -fx-border-width: 2px;
     -fx-border-color: #E09D0D;
+    -fx-padding: 0;
 }
 .toggle-style:hover{
     -fx-border-color: #E05D0D;
@@ -42,4 +43,5 @@
 .toggle-style:selected{
     -fx-border-color: #E05D0D;
     -fx-border-width: 4px;
+    -fx-padding: -2;
 }
