@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -62,22 +61,12 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Button fx:id="cancelButton" mnemonicParsing="false" stylesheets="@../button/ButtonStyle.css" text="Avbryt köp">
-                                       <styleClass>
-                                          <String fx:value="button-style-cancel" />
-                                          <String fx:value="text-medium-title" />
-                                       </styleClass>
-                                    </Button>
+                                    <Button fx:id="cancelButton" mnemonicParsing="false" onMouseClicked="#abort" styleClass="button-style-cancel" stylesheets="@../button/ButtonStyle.css" text="Avbryt köp" />
                                  </children>
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                                  <children>
-                                    <Button fx:id="okButton" mnemonicParsing="false" stylesheets="@../button/ButtonStyle.css" text="Slutför köp">
-                                       <styleClass>
-                                          <String fx:value="button-style-ok" />
-                                          <String fx:value="text-medium-title" />
-                                       </styleClass>
-                                    </Button>
+                                    <Button fx:id="okButton" mnemonicParsing="false" onMouseClicked="#confirm" styleClass="button-style-ok" stylesheets="@../button/ButtonStyle.css" text="Slutför köp" />
                                  </children>
                               </VBox>
                            </children>

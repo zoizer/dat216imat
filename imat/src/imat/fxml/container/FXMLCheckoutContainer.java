@@ -23,6 +23,7 @@ import se.chalmers.cse.dat216.project.ShoppingCart;
 
 import java.io.IOException;
 import java.util.function.UnaryOperator;
+import javafx.event.Event;
 import javafx.scene.layout.VBox;
 
 /**
@@ -63,6 +64,7 @@ public class FXMLCheckoutContainer extends AnchorPane {
         priceLabel.setText(Double.toString(shoppingCart.getTotal()) + " kr"); //initiera
         mypage = (FXMLMyPageContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.MY_PAGE_CONTAINER);
         inv = (FXMLInventoryContainer)FXMLApplicationController.Get().GetSceneNode(FXMLApplicationController.SceneNode.INVENTORY_CONTAINER);
+        okButton.setDisable(true);
     }
 
     public void Activate() {
@@ -72,6 +74,15 @@ public class FXMLCheckoutContainer extends AnchorPane {
         priceLabel.setText(Double.toString(shoppingCart.getTotal()) + " kr"); //initiera
     }
     
+    @FXML
+    protected void abort(Event ev) {
+        System.out.println("ABORT");
+        FXMLApplicationController.Get().DeselectButtons();
+    }
     
+    @FXML
+    protected void confirm(Event ev) {
+        System.out.println("CONFIRM");
+    }
 }
 

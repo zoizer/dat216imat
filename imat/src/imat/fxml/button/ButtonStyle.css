@@ -10,24 +10,39 @@
     -fx-background-color: red;
     -fx-border-width: 4px;
     -fx-border-color: #8B0000;
+    -fx-font-size: 20px;
+    -fx-font-family: "System Bold";
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.button-style-cancel:hover{
+    -fx-background-color: #DD0000;
+    -fx-border-color: #700000;
+}
+.button-style-cancel:pressed{
+    -fx-background-color: #BB0000;
 }
 .button-style-ok{
     -fx-background-insets: 2px;
     -fx-background-color: #008000;
     -fx-border-width: 4px;
     -fx-border-color: #006400;
+    -fx-font-size: 20px;
+    -fx-font-family: "System Bold";
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
 }
-.button-style-cancel{
-    -fx-background-insets: 2px;
-    -fx-background-color: red;
-    -fx-border-width: 4px;
-    -fx-border-color: #8B0000;
+.button-style-ok:hover{
+    -fx-background-color: #006600;
+    -fx-border-color: #004900;
 }
-.button-style-ok{
-    -fx-background-insets: 2px;
-    -fx-background-color: #008000;
-    -fx-border-width: 4px;
-    -fx-border-color: #006400;
+.button-style-ok:disabled{
+    -fx-background-color: gray;
+    -fx-text-fill: black;
+    -fx-border-color: black;
+}
+.button-style-ok:pressed{
+    -fx-background-color: #005000;
 }
 .button-style:hover{
     -fx-border-color: #E05D0D;
