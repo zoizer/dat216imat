@@ -86,15 +86,17 @@ public class FXMLReceiptContainer extends AnchorPane {
     }
     
     public void Update() {
+        System.out.println("HEllo");
         List<Order> l = IMatDataHandler.getInstance().getOrders();
         System.out.println(l);
-        if (!l.equals(old)) {
+        if (true) { // used useless optimization here that contained a bug.
             receipt.getChildren().clear();
             old = l;
             for (Order e : old) {
                 receipt.getChildren().add(new FXMLReceiptItem(e, t, this));
             }
             UpdateReceiptProducts(null);
+            System.out.println("SEEMS I CANT SEE THIS");
         }
         
         if (receipt.getChildren().isEmpty()) {
