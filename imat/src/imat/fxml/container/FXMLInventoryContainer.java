@@ -9,15 +9,16 @@ import imat.fxml.item.FXMLInventoryProductItem;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.ShoppingCart;
 
 /**
  * FXML extension class
@@ -98,5 +99,25 @@ public class FXMLInventoryContainer extends AnchorPane {
         p.Enable();
         vbox.getChildren().add(p);
         hasInventory = true;
+    }
+    
+    public void CreateBackendShoppingCart() {
+        ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
+        cart.clear();
+        for (Map.Entry<Product, FXMLInventoryProductItem> e : items.entrySet()) {
+            if (e.getValue().IsActive()) {
+                cart.addProduct(e.getKey(), e.getValue().GetAmount());
+            }
+        }
+    }
+    
+    public void ClearShoppingCart() {
+        ShoppingCart cart = IMatDataHandler.getInstance().getShoppingCart();
+        cart.clear();
+        for (Map.Entry<Product, FXMLInventoryProductItem> e : items.entrySet()) {
+            if (e.getValue().IsActive()) {
+                HideProduct(e.getValue());
+            }
+        }
     }
 }

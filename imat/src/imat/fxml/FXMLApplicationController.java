@@ -106,8 +106,8 @@ public class FXMLApplicationController implements Initializable {
         
         productCtn = new FXMLProductContainer();
         mypageCtn = new FXMLMyPageContainer();
-        checkoutCtn = new FXMLCheckoutContainer();
         invCtn = new FXMLInventoryContainer();
+        checkoutCtn = new FXMLCheckoutContainer();
         receiptCtn = new FXMLReceiptContainer();
         
         mainBtn1.getChildren().add(receiptBtn);
@@ -143,6 +143,7 @@ public class FXMLApplicationController implements Initializable {
                 }
                 else if (t.getSelectedToggle() instanceof FXMLCheckoutButton) {
                     SetMainBody(checkoutCtn);
+                    checkoutCtn.Activate();
                 }
                 else if (t.getSelectedToggle() instanceof FXMLReceiptButton) {
                     receiptCtn.Update();
@@ -167,7 +168,6 @@ public class FXMLApplicationController implements Initializable {
                 SetMainBody(productCtn);
             }
         });
-
     }    
     
     public void DeselectButtons() {
