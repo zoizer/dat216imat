@@ -78,20 +78,13 @@ public class FXMLReceiptContainer extends AnchorPane {
         varNoSelect = noselect;
         t = new ToggleGroup();
         selectedReceiptCtn.getChildren().remove(orderid);
-        /*old = IMatDataHandler.getInstance().getOrders();
-        for (Order e : old) {
-            receipt.getChildren().add(new FXMLReceiptItem(e, t, this));
-        }*/
         Update();
         // doubt it really matter that the old ReceiptItems are memory leaked in ToggleGroup.
         
         t.selectedToggleProperty().addListener((ChangeListener<Toggle>) (ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) -> {
-            selectedReceiptCtn.getChildren().remove(orderid);
             if (t.getSelectedToggle() != null) {
                 FXMLReceiptItem i = (FXMLReceiptItem)t.getSelectedToggle();
                 UpdateReceiptProducts(i);
-                selectedReceiptCtn.getChildren().add(orderid);
-                ordertext.setText(String.valueOf(i.GetOrder().getOrderNumber()));
             } else {
                 UpdateReceiptProducts(null);
             }
@@ -102,7 +95,6 @@ public class FXMLReceiptContainer extends AnchorPane {
     
     public void Update() {
         List<Order> l = IMatDataHandler.getInstance().getOrders();
-        System.out.println(l);
         if (true) { // used useless optimization here that contained a bug.
             receipt.getChildren().clear();
             old = l;
@@ -119,12 +111,15 @@ public class FXMLReceiptContainer extends AnchorPane {
     
     private void UpdateReceiptProducts(FXMLReceiptItem i) {
         receiptProduct.getChildren().clear();
+        selectedReceiptCtn.getChildren().remove(orderid);
         if (i == null) {
             // 
         } else {
             for (ShoppingItem e : i.GetOrder().getItems()) {
                 receiptProduct.getChildren().add(new FXMLReceiptProductItem(e.getProduct(), e.getAmount()));
             }
+            selectedReceiptCtn.getChildren().add(orderid);
+            ordertext.setText(String.valueOf(i.GetOrder().getOrderNumber()));
         }
         
         if (receiptProduct.getChildren().isEmpty()) {
